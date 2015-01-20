@@ -77,6 +77,13 @@ Standard errors are:
             
 **401**: Authentication required or failed
 
+    {
+        "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+        "title": "Unauthorized",
+        "status": 401,
+        "detail": "Unauthorized"
+    }
+    
 **403**: Requested resource is not available for the currently authenticated user
 
 **404**: Resource not found
@@ -84,6 +91,20 @@ Standard errors are:
 **405**: Method not allowed
 
 **422**: Unprocessable Entity due to input validation error
+
+    {
+        "validation_messages": {
+            "companyDetails": {
+                "name": {
+                    "stringLengthTooLong": "The input is more than 25 characters long"
+                }
+            }
+        },
+        "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+        "title": "Unprocessable Entity",
+        "status": 422,
+        "detail": "Failed Validation"
+    }
 
 **500**: Resource action failed due to internal error
 
@@ -153,7 +174,9 @@ All action URLs are assumed to have the /api prefix. This path directory is omit
 ## Account Resource [/api/account]
 System Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
 
-### Create an Account [POST]
+### Create or Add data to an Account [POST]
+This action creates a new Account resource or adds missing information to an existing one. It cannot be used to override existing information.
+Additionally, this action creates a link between the currently authenticated user and the account.
 A POST to /account can get two affirmative responses - 200 or 201.
 
 **The 201 response** indicates the resource was created successfully and the requesting user is linked to the newly created account.
@@ -219,13 +242,13 @@ In either case, the same resource is returned. An existing resource will be upda
             "companyDetails": {"name": "company name"},
             "ssn": "123456781",
             "businessAddress": {
-                "address": "",
+                "streetAddress": "",
                 "zipcode": "",
                 "apt-unit": "",
                 "phone": ""
             },
             "personalAddress": {
-                "address": "",
+                "streetAddress": "",
                 "zipcode": "",
                 "apt-unit": "",
                 "phone": ""
@@ -248,13 +271,13 @@ In either case, the same resource is returned. An existing resource will be upda
                     "name": "company name"
                 },
                 "businessAddress": {
-                    "address": "",
+                    "streetAddress": "",
                     "zipcode": "",
                     "apt-unit": "",
                     "phone": ""
                 },
                 "personalAddress": {
-                    "address": "",
+                    "streetAddress": "",
                     "zipcode": "",
                     "apt-unit": "",
                     "phone": ""
@@ -308,69 +331,9 @@ If a vendor is specified, the terms are provided for an expected transaction bet
             "feePer1K": 20
         }
 
-## Account Business Address [/api/account/{accountId}/businessAddress/]
-Account subresource that describes the account's physical business address and contact details
-+ Parameters
-    + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
-
-### Update the Account Business Address [PUT]
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "address": "",
-                "zipcode": "",
-                "apt-unit": "",
-                "phone": ""
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "accountId": "BHae12d442123"
-                "address": "",
-                "zipcode": "",
-                "apt-unit": "",
-                "phone": ""
-            }
-
-## Account Personal Address [/api/account/{accountId}/personalAddress/]
-Account subresource that describes the account's physical personal address and contact details
-+ Parameters
-    + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
-
-### Update the Account Personal Address [PUT]
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "address": "",
-                "zipcode": "",
-                "apt-unit": "",
-                "phone": ""
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "accountId": "BHae12d442123"
-                "address": "",
-                "zipcode": "",
-                "apt-unit": "",
-                "phone": ""
-            }
-
-
-## Vendor-Customer Link [/api/links/{linkId}]
-A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer, from the vendor's point of view
+## Customer Sales Info [/api/customer-sales-info/{linkId}]
+A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer, from the vendor's point of view.
+The linkId parameter is returned as part of the POST /api/account action
 + Parameters
     + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /links resource
 
@@ -400,8 +363,6 @@ A resource that describes the connection between a particular customer and a par
     + Body
 
             {
-                "vendorId": "BHae12d442123",
-                "customerId": "BHae12d442123",
                 "knownSince": "2002-12-25",
                 "totalSalesAmount": 1000,
                 "totalSalesCount": 355,
