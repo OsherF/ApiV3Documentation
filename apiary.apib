@@ -281,36 +281,60 @@ In either case, the same resource is returned. An existing resource will be upda
                     "apt-unit": "",
                     "phone": ""
                 },
-                "type": "customer"
+                "type": "customer",
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/account-id"
+                    },
+                    "terms": {
+                        "href": "https://behalf.com/api/account/account-id/terms"
+                    },
+                    "customer-sales": {
+                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    }
+                }
             }
 
 + Response 201 (application/json)
 
-        {
-            "accountId": "account-id",
-            "firstName": "firstname",
-            "lastName": "lastname",
-            "ssn": "123456781",
-            "contact":{
-                "contactId": "contact-id", "email":"email"
-            },
-            "companyDetails": {
-                "name": "company name"
-            },
-            "businessAddress": {
-                "address": "",
-                "zipcode": "",
-                "apt-unit": "",
-                "phone": ""
-            },
-            "personalAddress": {
-                "address": "",
-                "zipcode": "",
-                "apt-unit": "",
-                "phone": ""
-            },
-            "type": "customer"
-        }
+    + Body
+    
+            {
+                "accountId": "account-id",
+                "firstName": "firstname",
+                "lastName": "lastname",
+                "ssn": "123456781",
+                "contact":{
+                    "contactId": "contact-id", "email":"email"
+                },
+                "companyDetails": {
+                    "name": "company name"
+                },
+                "businessAddress": {
+                    "address": "",
+                    "zipcode": "",
+                    "apt-unit": "",
+                    "phone": ""
+                },
+                "personalAddress": {
+                    "address": "",
+                    "zipcode": "",
+                    "apt-unit": "",
+                    "phone": ""
+                },
+                "type": "customer",
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/account-id"
+                    },
+                    "terms": {
+                        "href": "https://behalf.com/api/account/account-id/terms"
+                    },
+                    "customer-sales": {
+                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    }
+                }
+            }
 
 ## Account Terms [/api/account/{accountId}/terms?vendor={vendorId}]
 Account subresource that describes the account's available terms. This resource is only available to authenticated linked users or to the owner of the account.
