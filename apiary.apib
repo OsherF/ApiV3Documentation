@@ -427,32 +427,3 @@ A resource that describes the connection between a particular customer and a par
                 "avgYtdSalesAmount": 32,
                 "paymentMethod": "COD"
             }
-            
-# Group Pay
-All action URLs are assumed to have the /api prefix. This path directory is omitted from the examples and resource names for brevity.
-
-## Bank [/api/bank/{bankid}]
-A Bank resource is used to set up repayments for a granted loan. /bank represents a single bank object with current state and properties
-+ Parameters
-    + bankid (required, string, `BHae12d442123`) ... Unique identifier of the /bank resource
-
-### Change Bank state [PATCH]
-"primary" - Set a bank as the primary bank. The current primary bank will first be unset but not removed.
-+ Request (application/json)
-
-    + Body
-
-            {
-                "primary": true
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "bankId": "BHae12d442123"
-            }
-
-### Remove a Bank [DELETE]
-+ Response 204
