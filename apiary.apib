@@ -391,6 +391,8 @@ If a vendor is specified, the terms are provided for an expected transaction bet
 + Response 400 (application/json)
     
     "Account is missing properties" followed by a list of missing properties. This list details those /account resource properties which have no value and must be entered to retrieve Terms.
+    
+    Entering new values into /account properties is done by POST to /account with the terms accountId.
 
     + Body
     
