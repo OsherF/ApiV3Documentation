@@ -204,7 +204,7 @@ A POST to /account can get two affirmative responses - 200 or 201.
 **The 200 response** indicates the resource already existed and the requesting user is now linked to the account.
 
 In either case, the same resource is returned. An existing resource will be updated with new information only if that information is missing from the resource. An existing property will not be overridden by a POST.
-+ Request Required parameters only (application/json)
++ Request Mandatory parameters only (application/json)
 
     + Body
 
@@ -219,32 +219,32 @@ In either case, the same resource is returned. An existing resource will be upda
     
             {
                 "type": "object",
-                "required": false,
+                "required": true,
                 "properties": {
                     "firstName": {
-                        "type": ["string", "null"],
-                        "required": false
+                        "type": "string",
+                        "required": true
                     },
                     "lastName": {
-                        "type": "number",
+                        "type": "string",
                         "required": true
                     },
                     "contact": {
                         "type": "object",
-                        "required": false,
+                        "required": true,
                         "properties": {
                             "email": {
-                                "type": "number",
+                                "type": "string",
                                 "required": true
                             }
                         }
                     },
                     "companyDetails": {
                         "type": "object",
-                        "required": false,
+                        "required": true,
                         "properties": {
                             "name": {
-                                "type": "number",
+                                "type": "string",
                                 "required": true
                             }
                         }
@@ -258,7 +258,13 @@ In either case, the same resource is returned. An existing resource will be upda
             "firstName": "firstname",
             "lastName":  "lastname",
             "contact": {"email":"email"},
-            "companyDetails": {"name": "company name"},
+            "companyDetails": {
+                "name": "company name",
+                "duns": "DUNS number",
+                "tin": "TIN code",
+                "website": "http://website.com",
+                "inceptionDate": "2002-12-25"
+            },
             "ssn": "123456781",
             "businessAddress": {
                 "streetAddress": "",
@@ -287,7 +293,11 @@ In either case, the same resource is returned. An existing resource will be upda
                     "contactId": "contact-id", "email":"email"
                 },
                 "companyDetails": {
-                    "name": "company name"
+                    "name": "company name",,
+                    "duns": "DUNS number",
+                    "tin": "TIN code",
+                    "website": "http://website.com",
+                    "inceptionDate": "2002-12-25"  
                 },
                 "businessAddress": {
                     "streetAddress": "",
@@ -328,7 +338,11 @@ In either case, the same resource is returned. An existing resource will be upda
                     "contactId": "contact-id", "email":"email"
                 },
                 "companyDetails": {
-                    "name": "company name"
+                    "name": "company name",
+                    "duns": "DUNS number",
+                    "tin": "TIN code",
+                    "website": "http://website.com",
+                    "inceptionDate": "2002-12-25"  
                 },
                 "businessAddress": {
                     "address": "",
