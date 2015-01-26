@@ -387,6 +387,19 @@ If a vendor is specified, the terms are provided for an expected transaction bet
             "maxRepayment": 60,
             "feePer1K": 20
         }
+        
++ Response 400 (application/json)
+    
+    "Account is missing properties" followed by a list of missing properties. This list details those /account resource properties which have no value and must be entered to retrieve Terms.
+
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Bad Request",
+                "status": 400,
+                "detail": "Account is missing properties: ssn"
+            }
 
 ## Customer Sales Info [/api/customer-sales-info/{linkId}]
 A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer, from the vendor's point of view.
