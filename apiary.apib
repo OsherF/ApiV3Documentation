@@ -363,7 +363,8 @@ If a vendor is specified, the terms are provided for an expected transaction bet
           
 + Response 403 (application/json)
     
-    Access to the account's terms is forbidden because no link exists between the currently authenticated vendor and the customer    
+    Access to the account's terms is forbidden because no link exists between the currently authenticated vendor and the customer.
+    Note that in some cases, an 403 is returned when the requested Account ID does not exist, instead of the expected 404.
 
     + Body
     
