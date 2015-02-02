@@ -114,7 +114,7 @@ Standard errors are:
 
 **530**: Resource is currently unavailable, try again later. This response code will have a Retry-After header to suggest an estimated retry time
 
-**531**: Related acount is missing SSN. 
+**531**: Related acount is missing required attributes (SSN or Address).
 
 Specific application errors are returned as 500 errors in the range 530 - 580
 
@@ -360,8 +360,20 @@ If a vendor is specified, the terms are provided for an expected transaction bet
             "maxAmount": 5000,
             "repaymentsFrequency": "Monthly|Daily"
         }
-        
-+ Response 400 (application/json)
+          
++ Response 403 (application/json)
+    
+    Access to the account's terms is forbidden because no link exists between the currently authenticated vendor and the customer    
+
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Bad Request",
+                "status": 531,
+                "detail": "Account is missing properties: ssn"
+            }      
++ Response 531 (application/json)
     
     "Account is missing properties" followed by a list of missing properties. This list details those /account resource properties which have no value and must be entered to retrieve Terms.
     
@@ -372,7 +384,7 @@ If a vendor is specified, the terms are provided for an expected transaction bet
             {
                 "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
                 "title": "Bad Request",
-                "status": 400,
+                "status": 531,
                 "detail": "Account is missing properties: ssn"
             }
 
