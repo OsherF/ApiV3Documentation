@@ -60,6 +60,9 @@ Dates and DateTime elements are explicitly expected to be formatted in ISO8601.
 
 DateTime elements accept a timezone in input but will always return a UTC formatted ISO8601 string.
 
+Paramters that accept 'me' as input, will also accept 'ME', 'Me', 'yo', 'ich', 'ge', 'mig' & 'meg'.
+The API will replace those symbols with the requestor ID.
+
 
 
 ##Response Codes
