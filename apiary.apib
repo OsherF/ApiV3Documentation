@@ -60,6 +60,8 @@ Dates and DateTime elements are explicitly expected to be formatted in ISO8601.
 
 DateTime elements accept a timezone in input but will always return a UTC formatted ISO8601 string.
 
+
+
 ##Response Codes
 Response codes indicate the way the requested action was handled:
 
@@ -340,7 +342,7 @@ In either case, the same resource is returned. An existing resource will be upda
 Account subresource that describes the account's available terms. This resource is only available to authenticated linked users or to the owner of the account.
 + Parameters
     + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
-    + vendor (optional, string, `BHae12d442123`) ... Unique identifier of the vendor to cross terms with
+    + vendor (optional, string, `BHae12d442123`) ... Unique identifier of the vendor to cross terms with. Can also accept 'me' value.
 
 ### Retrieve account terms [GET]
 Retrieve a terms resource for the requested account. This action may cause terms to be recalcualted for the account.
