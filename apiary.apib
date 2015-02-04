@@ -128,7 +128,9 @@ The Behalf API v3 supports Hypermedia links as part of its standard response str
 For Behalf API consumers, the Hypermedia links that are provided indicate the next available steps for the current resource. Based on these links, a developer or an automated process can explore the API or get indications for the next steps in the current workflow.
 This next step is described as a hyperlink URL which represents a resource. This resource can be called using http verbs normally. Note that many of our actions respond only to specific verbs. An invalid method error (405) will be returned if a specific verb is unavailable.
 
-Example:
+You can always find out what verbs are available by using the OPTIONS http VERB on a resource.
+
+HAL Links structure example:
 
     "_links": {
         "self": {
