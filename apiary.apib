@@ -341,6 +341,66 @@ In either case, the same resource is returned. An existing resource will be upda
                 }
             }
 
+## Account Personal Address [/api/account/{accountId}/personalAddress]
+An account's personal address sub-resource. This resource contains location and contact details of the account's owner
++ Parameters
+    + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
+
+### Update Personal Address [PUT]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "streetAddress": "123rd 9th East st.",
+                "zipCode": "44321",
+                "apt_unit": "12c",
+                "phone": "9718332561"
+            }
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "accountId": "BHae12d442123",
+                "streetAddress": "123rd 9th East st.",
+                "zipCode": "44321",
+                "apt_unit": "12c",
+                "phone": "9718332561"
+            }
+
+## Account Business Address [/api/account/{accountId}/personalAddress]
+An account's business address sub-resource. This resource contains location and contact details of the account's business or company
++ Parameters
+    + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
+
+### Update Business Address [PUT]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "streetAddress": "123rd 9th East st.",
+                "zipCode": "44321",
+                "apt_unit": "12c",
+                "phone": "9718332561"
+            }
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "accountId": "BHae12d442123",
+                "streetAddress": "123rd 9th East st.",
+                "zipCode": "44321",
+                "apt_unit": "12c",
+                "phone": "9718332561"
+            }
+
 ## Account Terms [/api/account/{accountId}/terms?vendor={vendorId}]
 Account subresource that describes the account's available terms. This resource is only available to authenticated linked users or to the owner of the account.
 + Parameters
