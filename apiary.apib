@@ -119,6 +119,8 @@ Standard errors are:
 
 **531**: Related acount is missing required attributes (SSN or Address).
 
+**532**: Credit Line Declined.
+
 Specific application errors are returned as 500 errors in the range 530 - 580
 
 ## Hypermedia links
@@ -450,6 +452,21 @@ If a vendor is specified, the terms are provided for an expected transaction bet
                 "title": "Bad Request",
                 "status": 531,
                 "detail": "Account is missing properties: ssn"
+            }
+            
++ Response 531 (application/json)
+    
+    Account Credit Line was declined. This account currently has no creditline available from Behalf and cannot create payments.
+    
+    Note that this state is not permanent and may change in future GET terms checks.
+    
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Credit Line Delined",
+                "status": 532,
+                "detail": "The account was declined"
             }
 
 ## Customer Sales Info [/api/customer-sales-info/{linkId}]
