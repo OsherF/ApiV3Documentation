@@ -532,6 +532,47 @@ The linkId parameter is returned as part of the POST /api/account action
 # Group Pay
 All action URLs are assumed to have the /api prefix. This path directory is omitted from the examples and resource names for brevity.
 
+## Payments [/api/payments/{paymentId}]
+A resource that describes a transaction between a customer and a vendor.
+A Payment object shows meta information about the payment and its current state. This object is used as the basis for repayment plans and enforcing the lifecycle of a transaction.
+
++ Parameters
+    + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
+
+### Modify particular aspects of the payment [PATCH]
+Accepted properties:
+* status - can be changed to one of (). Note
++ Request (application/json)
+
+    + Body
+            {
+                "status": "declined"
+            }
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "paymentId": "BHae12d442123",
+                "supplierCompanyId": "BHae12d442123",
+                "customerCompanyId": "BHae12d442123",
+                "customerBankId": "BHae12d442123",
+                "amount": 500,
+                "status": "accepted",
+                "termsAndConditions": true,
+                "orderId": "",
+                "messageToBuyer": "",
+                "messageToSeller": "",
+                "referred": false,
+                "submissionDate": "2015-01-01 00:03:00",
+                "initialDate": "2015-01-01 00:03:00",
+                "payDate": "2015-01-01 00:03:00",
+                "payoutMethod": "ACH",
+                "_links": {
+                    "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
+                }
+            }
+
 ## Bank [/api/banks/{bankid}]
 A Bank resource is used to set up repayments for a granted loan. /bank represents a single bank object with current state and properties. An account may only access those bank resources that are directly bound to itself.
 + Parameters
