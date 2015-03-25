@@ -95,6 +95,8 @@ Standard errors are:
 
 **405**: Method not allowed
 
+**409**: Conflict
+
 **422**: Unprocessable Entity due to input validation error
 
     {
@@ -581,7 +583,7 @@ A Bank resource is used to set up repayments for a granted loan. /bank represent
 ### Change Bank state [PATCH]
 The Patch action is used to modify specific traits of a bank resource. These traits are not the bank's properties but rather are derived from its state or influence it.
 
-"primary" - Set a bank as the primary bank. The current primary bank will first be unset but not removed.
+"primary" - Set a bank as the primary bank. The current primary bank will first be unset but not removed. A bank must be Verified in order to be eligible to become primary.
 
 + Request (application/json)
 
