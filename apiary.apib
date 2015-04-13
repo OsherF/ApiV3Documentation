@@ -377,7 +377,7 @@ An account's personal address sub-resource. This resource contains location and 
                 "phone": "9718332561"
             }
 
-## Account Business Address [/api/account/{accountId}/personalAddress]
+## Account Business Address [/api/account/{accountId}/businessAddress]
 An account's business address sub-resource. This resource contains location and contact details of the account's business or company
 + Parameters
     + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
@@ -591,6 +591,7 @@ The Patch action is used to modify specific traits of a bank resource. These tra
 + Request (application/json)
 
     + Body
+    
             {
                 "primary": true
             }
