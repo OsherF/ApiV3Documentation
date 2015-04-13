@@ -543,7 +543,8 @@ A Payment object shows meta information about the payment and its current state.
 
 ### Modify particular aspects of the payment [PATCH]
 Accepted properties:
-* status - can be changed to one of (). Note
+* status - can be changed to "declined". Certain workflows may not allow a status to be changed to the requested status.
+
 + Request (application/json)
 
     + Body
