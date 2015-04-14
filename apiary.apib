@@ -563,39 +563,51 @@ A Payment object shows meta information about the payment and its current state.
                 },
                 "_embedded": {
                     "payments": [
-                        {
-                            "paymentId": "BHae12d442123",
-                            "supplierCompanyId": "BHae12d442123",
-                            "customerCompanyId": "BHae12d442123",
-                            "customerBankId": "BHae12d442123",
+                       {
+                            "paymentId": "006J000000HwiPGIAZ",
+                            "supplierCompanyId": "001J0000011DTrDIAW",
+                            "customerCompanyId": "001J000001YxXxwIAF",
+                            "supplierCompany": {
+                                "name": "ZazmardalSeller_keep_me2"
+                            },
+                            "customerBankId": "a06J000000Bqqn4IAB",
                             "amount": 345,
-                            "status": "SUBMITTED",
+                            "paymentStatus": "DRAFT",
                             "termsAndConditions": false,
                             "orderId": null,
                             "messageToBuyer": null,
                             "messageToSeller": null,
                             "referred": false,
-                            "submissionDate": "2015-04-01",
-                            "initialDate": "2015-04-01",
+                            "submissionDate": "2015-02-22",
+                            "initialDate": "2015-02-22",
                             "payDate": null,
-                            "payoutMethod": "Virtual Card"
+                            "payoutMethod": "Virtual Card",
+                            "totalToCollect": 357,
+                            "outstandingAmount": 357,
+                            "numSetteledRepayments": 0
                         },
                         {
-                            "paymentId": "BHae12d442123",
-                            "supplierCompanyId": "BHae12d442123",
-                            "customerCompanyId": "BHae12d442123",
-                            "customerBankId": "BHae12d442123",
+                            "paymentId": "006J000000HwiPGIAZ",
+                            "supplierCompanyId": "001J0000011DTrDIAW",
+                            "customerCompanyId": "001J000001YxXxwIAF",
+                            "supplierCompany": {
+                                "name": "ZazmardalSeller_keep_me2"
+                            },
+                            "customerBankId": "a06J000000Bqqn4IAB",
                             "amount": 345,
-                            "status": "DRAFT",
+                            "paymentStatus": "DRAFT",
                             "termsAndConditions": false,
-                            "orderId": "dfgs",
+                            "orderId": null,
                             "messageToBuyer": null,
                             "messageToSeller": null,
                             "referred": false,
-                            "submissionDate": null,
-                            "initialDate": "2015-04-01",
+                            "submissionDate": "2015-02-22",
+                            "initialDate": "2015-02-22",
                             "payDate": null,
-                            "payoutMethod": "Virtual Card"
+                            "payoutMethod": "Virtual Card",
+                            "totalToCollect": 357,
+                            "outstandingAmount": 357,
+                            "numSetteledRepayments": 0
                         },
                         ...
                     ]
@@ -622,21 +634,27 @@ Accepted properties:
     + Body
 
             {
-                "paymentId": "BHae12d442123",
-                "supplierCompanyId": "BHae12d442123",
-                "customerCompanyId": "BHae12d442123",
-                "customerBankId": "BHae12d442123",
-                "amount": 500,
-                "status": "accepted",
-                "termsAndConditions": true,
-                "orderId": "",
-                "messageToBuyer": "",
-                "messageToSeller": "",
+                "paymentId": "006J000000HwiPGIAZ",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "ZazmardalSeller_keep_me2"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "paymentStatus": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": null,
+                "messageToBuyer": null,
+                "messageToSeller": null,
                 "referred": false,
-                "submissionDate": "2015-01-01 00:03:00",
-                "initialDate": "2015-01-01 00:03:00",
-                "payDate": "2015-01-01 00:03:00",
-                "payoutMethod": "ACH",
+                "submissionDate": "2015-02-22",
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0,
                 "_links": {
                     "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
                 }
