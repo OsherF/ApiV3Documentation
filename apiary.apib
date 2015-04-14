@@ -387,7 +387,7 @@ An account's business address sub-resource. This resource contains location and 
 + Request (application/json)
 
     + Body
-
+pay
             {
                 "streetAddress": "123rd 9th East st.",
                 "zipCode": "44321",
@@ -548,47 +548,61 @@ A Payment object shows meta information about the payment and its current state.
 + Response 200 (application/json)
 
     + Body
+
             {
-                {
-                    "paymentId": "BHae12d442123",
-                    "supplierCompanyId": "BHae12d442123",
-                    "customerCompanyId": "BHae12d442123",
-                    "customerBankId": "BHae12d442123",
-                    "amount": 500,
-                    "status": "accepted",
-                    "termsAndConditions": true,
-                    "orderId": "",
-                    "messageToBuyer": "",
-                    "messageToSeller": "",
-                    "referred": false,
-                    "submissionDate": "2015-01-01 00:03:00",
-                    "initialDate": "2015-01-01 00:03:00",
-                    "payDate": "2015-01-01 00:03:00",
-                    "payoutMethod": "ACH",
-                    "_links": {
-                        "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
+                "_links": {
+                    "self": {
+                        "href": "https://www.local.behalf.com/api/payments?page=1"
+                    },
+                    "first": {
+                        "href": "https://www.local.behalf.com/api/payments"
+                    },
+                    "last": {
+                        "href": "https://www.local.behalf.com/api/payments?page=1"
                     }
                 },
-                {
-                    "paymentId": "BHae12d442123",
-                    "supplierCompanyId": "BHae12d442123",
-                    "customerCompanyId": "BHae12d442123",
-                    "customerBankId": "BHae12d442123",
-                    "amount": 500,
-                    "status": "accepted",
-                    "termsAndConditions": true,
-                    "orderId": "",
-                    "messageToBuyer": "",
-                    "messageToSeller": "",
-                    "referred": false,
-                    "submissionDate": "2015-01-01 00:03:00",
-                    "initialDate": "2015-01-01 00:03:00",
-                    "payDate": "2015-01-01 00:03:00",
-                    "payoutMethod": "ACH",
-                    "_links": {
-                        "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
-                    }
+                "_embedded": {
+                    "payments": [
+                        {
+                            "paymentId": "BHae12d442123",
+                            "supplierCompanyId": "BHae12d442123",
+                            "customerCompanyId": "BHae12d442123",
+                            "customerBankId": "BHae12d442123",
+                            "amount": 345,
+                            "status": "SUBMITTED",
+                            "termsAndConditions": false,
+                            "orderId": null,
+                            "messageToBuyer": null,
+                            "messageToSeller": null,
+                            "referred": false,
+                            "submissionDate": "2015-04-01",
+                            "initialDate": "2015-04-01",
+                            "payDate": null,
+                            "payoutMethod": "Virtual Card"
+                        },
+                        {
+                            "paymentId": "BHae12d442123",
+                            "supplierCompanyId": "BHae12d442123",
+                            "customerCompanyId": "BHae12d442123",
+                            "customerBankId": "BHae12d442123",
+                            "amount": 345,
+                            "status": "DRAFT",
+                            "termsAndConditions": false,
+                            "orderId": "dfgs",
+                            "messageToBuyer": null,
+                            "messageToSeller": null,
+                            "referred": false,
+                            "submissionDate": null,
+                            "initialDate": "2015-04-01",
+                            "payDate": null,
+                            "payoutMethod": "Virtual Card"
+                        },
+                        ...
+                    ]
                 },
+                "page_count": 1,
+                "page_size": 25,
+                "total_items": 6
             }
 
 ### Modify particular aspects of the payment [PATCH]
