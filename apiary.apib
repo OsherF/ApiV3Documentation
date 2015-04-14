@@ -289,7 +289,7 @@ In either case, the same resource is returned. An existing resource will be upda
                 "streetAddress": "",
                 "zipcode": "",
                 "apt_unit": "",
-                "phone": ""
+                "phone": ""p
             }
         }
 
@@ -540,6 +540,56 @@ A Payment object shows meta information about the payment and its current state.
 
 + Parameters
     + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
+    
+### Get a list of payments [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+            {
+                {
+                    "paymentId": "BHae12d442123",
+                    "supplierCompanyId": "BHae12d442123",
+                    "customerCompanyId": "BHae12d442123",
+                    "customerBankId": "BHae12d442123",
+                    "amount": 500,
+                    "status": "accepted",
+                    "termsAndConditions": true,
+                    "orderId": "",
+                    "messageToBuyer": "",
+                    "messageToSeller": "",
+                    "referred": false,
+                    "submissionDate": "2015-01-01 00:03:00",
+                    "initialDate": "2015-01-01 00:03:00",
+                    "payDate": "2015-01-01 00:03:00",
+                    "payoutMethod": "ACH",
+                    "_links": {
+                        "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
+                    }
+                },
+                {
+                    "paymentId": "BHae12d442123",
+                    "supplierCompanyId": "BHae12d442123",
+                    "customerCompanyId": "BHae12d442123",
+                    "customerBankId": "BHae12d442123",
+                    "amount": 500,
+                    "status": "accepted",
+                    "termsAndConditions": true,
+                    "orderId": "",
+                    "messageToBuyer": "",
+                    "messageToSeller": "",
+                    "referred": false,
+                    "submissionDate": "2015-01-01 00:03:00",
+                    "initialDate": "2015-01-01 00:03:00",
+                    "payDate": "2015-01-01 00:03:00",
+                    "payoutMethod": "ACH",
+                    "_links": {
+                        "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
+                    }
+                },
+            }
 
 ### Modify particular aspects of the payment [PATCH]
 Accepted properties:
