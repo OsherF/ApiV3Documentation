@@ -203,12 +203,27 @@ Any modification of input, output or behavior of an existing (and deployed) API 
 
 Version negotiation is done through the URL path and is required to be specified. An unknown or unsupported version will be rejected outright.
 
+
+#Standard GET query parameters
+The following parameters and their specification are considered standard, optional parameters for any GET collection or entityt request. Note that in some contexts, these parameters will not make sense (such as limit on a GET single entity request).
+
+##Pagination parameters
+A GET request may use the limit and page query parameters to perform basic pagination on a collection of entities retrieved from the Behalf API.
+**limit** The limit parameter is the number of rows to be retrieved by any single page of the collection.
+**page** The page number to be retrieved. The first page is 1 and continues at single increments.
+
+##Fields filtering parameters
+
 # Group Members
 ## Account Resource [/api/account]
 Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
 
 ### Retrieve a collection of accounts [GET]
 This action retrieves a list of account elements linked to the authenticated user of the request.
+
++ Parameters
+
+    + query (optional, string) ... Search pattern when searching for account information
 
 + Request (application/json)
 
@@ -586,7 +601,62 @@ A Payment object shows meta information about the payment and its current state.
 
 + Parameters
     + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
-    
+
+### Create a new payment [POST]
+
+Create a payment entity with basic information. Note that creating a transaction does not submit it.
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "paymentId": "006J000000HwiPGIAZ",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "orderId": null,
+                "messageToSeller": null,
+                "numSetteledRepayments": 0
+            }
+
++ Response 201 (applicatio/json)
+
+    + Body
+
+            {
+                "paymentId": "006J000000HwiPGIAZ",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "Behalf Vendor"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "status": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": null,
+                "messageToBuyer": null,
+                "messageToSeller": null,
+                "referred": false,
+                "submissionDate": null,
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0,
+                "_links": {
+                    "self": {
+                        "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
+                    },
+                    "tnc": {
+                        "href": "http://www.behalf.com/termsAndConditions"
+                    }
+                }
+            }
+
 ### Get a list of payments [GET]
 
 + Request (application/json)
@@ -614,7 +684,7 @@ A Payment object shows meta information about the payment and its current state.
                             "supplierCompanyId": "001J0000011DTrDIAW",
                             "customerCompanyId": "001J000001YxXxwIAF",
                             "supplierCompany": {
-                                "name": "ZazmardalSeller_keep_me2"
+                                "name": "Behalf Vendor"
                             },
                             "customerBankId": "a06J000000Bqqn4IAB",
                             "amount": 345,
@@ -637,7 +707,7 @@ A Payment object shows meta information about the payment and its current state.
                             "supplierCompanyId": "001J0000011DTrDIAW",
                             "customerCompanyId": "001J000001YxXxwIAF",
                             "supplierCompany": {
-                                "name": "ZazmardalSeller_keep_me2"
+                                "name": "Behalf Vendor"
                             },
                             "customerBankId": "a06J000000Bqqn4IAB",
                             "amount": 345,
