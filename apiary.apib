@@ -205,12 +205,56 @@ Version negotiation is done through the URL path and is required to be specified
 
 # Group Members
 ## Account Resource [/api/account]
-System Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
+Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
+
+### Retrieve a collection of accounts [GET]
+This action retrieves a list of account elements linked to the authenticated user of the request.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://www.behalf.com/api/account?page=1"
+                    },
+                    "first": {
+                        "href": "https://www.behalf.com/api/account"
+                    },
+                    "last": {
+                        "href": "https://www.behalf.com/api/account?page=1"
+                    }
+                },
+                "_embedded": {
+                    "account": [
+                        {
+                            "accountId": "account-id",
+                            "firstName": "firstname",
+                            "lastName": "lastname",
+                            "contact":{
+                                "contactId": "contact-id", "email":"email"
+                            },
+                            "companyDetails": {
+                                "name": "company name",
+                            },
+                            "accountBalance": 2100
+                        }
+                    ]
+                },
+                "page_count": 1,
+                "page_size": 25,
+                "total_items": 1
+            }
 
 ### Create or Add data to an Account [POST]
 This action creates a new Account resource or adds missing information to an existing one. It cannot be used to override existing information.
 Additionally, this action creates a link between the currently authenticated user and the account.
 A POST to /account can get two affirmative responses - 200 or 201.
+
+The accountBalance property depends on the completion of the qualification step or terms retrieval for the account. Otherwise, this parameter may be 0.
 
 **The 201 response** indicates the resource was created successfully and the requesting user is linked to the newly created account.
 
@@ -307,6 +351,7 @@ In either case, the same resource is returned. An existing resource will be upda
                 "companyDetails": {
                     "name": "company name",
                 },
+                "accountBalance": 2100,
                 "_links": {
                     "self": {
                         "href": "https://behalf.com/api/account/account-id"
@@ -334,6 +379,7 @@ In either case, the same resource is returned. An existing resource will be upda
                 "companyDetails": {
                     "name": "company name",
                 },
+                "accountBalance": 0,
                 "_links": {
                     "self": {
                         "href": "https://behalf.com/api/account/account-id"
