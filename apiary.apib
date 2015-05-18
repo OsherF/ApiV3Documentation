@@ -289,7 +289,7 @@ In either case, the same resource is returned. An existing resource will be upda
                 "streetAddress": "",
                 "zipcode": "",
                 "apt_unit": "",
-                "phone": ""
+                "phone": ""p
             }
         }
 
@@ -387,7 +387,7 @@ An account's business address sub-resource. This resource contains location and 
 + Request (application/json)
 
     + Body
-
+pay
             {
                 "streetAddress": "123rd 9th East st.",
                 "zipCode": "44321",
@@ -540,6 +540,82 @@ A Payment object shows meta information about the payment and its current state.
 
 + Parameters
     + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
+    
+### Get a list of payments [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://www.behalf.com/api/payments?page=1"
+                    },
+                    "first": {
+                        "href": "https://www.behalf.com/api/payments"
+                    },
+                    "last": {
+                        "href": "https://www.behalf.com/api/payments?page=1"
+                    }
+                },
+                "_embedded": {
+                    "payments": [
+                       {
+                            "paymentId": "006J000000HwiPGIAZ",
+                            "supplierCompanyId": "001J0000011DTrDIAW",
+                            "customerCompanyId": "001J000001YxXxwIAF",
+                            "supplierCompany": {
+                                "name": "ZazmardalSeller_keep_me2"
+                            },
+                            "customerBankId": "a06J000000Bqqn4IAB",
+                            "amount": 345,
+                            "status": "DRAFT",
+                            "termsAndConditions": false,
+                            "orderId": null,
+                            "messageToBuyer": null,
+                            "messageToSeller": null,
+                            "referred": false,
+                            "submissionDate": "2015-02-22",
+                            "initialDate": "2015-02-22",
+                            "payDate": null,
+                            "payoutMethod": "Virtual Card",
+                            "totalToCollect": 357,
+                            "outstandingAmount": 357,
+                            "numSetteledRepayments": 0
+                        },
+                        {
+                            "paymentId": "006J000000HwiPGIAZ",
+                            "supplierCompanyId": "001J0000011DTrDIAW",
+                            "customerCompanyId": "001J000001YxXxwIAF",
+                            "supplierCompany": {
+                                "name": "ZazmardalSeller_keep_me2"
+                            },
+                            "customerBankId": "a06J000000Bqqn4IAB",
+                            "amount": 345,
+                            "status": "DRAFT",
+                            "termsAndConditions": false,
+                            "orderId": null,
+                            "messageToBuyer": null,
+                            "messageToSeller": null,
+                            "referred": false,
+                            "submissionDate": "2015-02-22",
+                            "initialDate": "2015-02-22",
+                            "payDate": null,
+                            "payoutMethod": "Virtual Card",
+                            "totalToCollect": 357,
+                            "outstandingAmount": 357,
+                            "numSetteledRepayments": 0
+                        },
+                        ...
+                    ]
+                },
+                "page_count": 1,
+                "page_size": 25,
+                "total_items": 6
+            }
 
 ### Modify particular aspects of the payment [PATCH]
 Accepted properties:
@@ -558,21 +634,27 @@ Accepted properties:
     + Body
 
             {
-                "paymentId": "BHae12d442123",
-                "supplierCompanyId": "BHae12d442123",
-                "customerCompanyId": "BHae12d442123",
-                "customerBankId": "BHae12d442123",
-                "amount": 500,
-                "status": "accepted",
-                "termsAndConditions": true,
-                "orderId": "",
-                "messageToBuyer": "",
-                "messageToSeller": "",
+                "paymentId": "006J000000HwiPGIAZ",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "ZazmardalSeller_keep_me2"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "status": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": null,
+                "messageToBuyer": null,
+                "messageToSeller": null,
                 "referred": false,
-                "submissionDate": "2015-01-01 00:03:00",
-                "initialDate": "2015-01-01 00:03:00",
-                "payDate": "2015-01-01 00:03:00",
-                "payoutMethod": "ACH",
+                "submissionDate": "2015-02-22",
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0,
                 "_links": {
                     "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
                 }
