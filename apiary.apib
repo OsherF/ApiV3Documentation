@@ -215,7 +215,7 @@ A GET request may use the limit and page query parameters to perform basic pagin
 ##Fields filtering parameters
 
 # Group Members
-## Account Resource [/api/account]
+## Account Resource [/api/account{?query}]
 Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
 
 ### Retrieve a collection of accounts [GET]
@@ -462,6 +462,24 @@ In either case, the same resource is returned. An existing resource will be upda
                         "href": "https://behalf.com/api/customer-sales-info/link-id"
                     }
                 }
+            }
+
+
+## Account Invite Resource [/api/account/{accountId}/invite]
+Invite an account to signup using the email address and personal details provided for the account
+
++ Parameters
+
+    + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
+
+### Send invitation [POST]
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            {
+                "accountId": "BHae12d442123"
             }
 
 ## Account Personal Address [/api/account/{accountId}/personalAddress]
