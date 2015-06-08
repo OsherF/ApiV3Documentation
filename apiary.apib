@@ -479,7 +479,26 @@ Invite an account to signup using the email address and personal details provide
     + Body
     
             {
-                "accountId": "BHae12d442123"
+                "accountId": "account-id",
+                "firstName": "firstname",
+                "lastName": "lastname",
+                "contact":{
+                    "contactId": "contact-id", "email":"email"
+                },
+                "companyDetails": {
+                    "name": "company name",
+                },
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/account-id"
+                    },
+                    "terms": {
+                        "href": "https://behalf.com/api/account/account-id/terms"
+                    },
+                    "customer-sales": {
+                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    }
+                }
             }
 
 ## Account Personal Address [/api/account/{accountId}/personalAddress]
