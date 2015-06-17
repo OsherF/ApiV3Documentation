@@ -216,13 +216,26 @@ A GET request may use the limit and page query parameters to perform basic pagin
 
 # Group Workflow
 ## Token Resource [/api/tokens]
+A token represents a user tracked action that is expected to lead to a particular system workflow, such as sign up or other conversion of state.
 
 ### Create a new token [POST]
+Create a new token and start its associated workflow
++ Request (application/json)
+
+    + Body
+    
+            {
+                "type": "signup"
+                "email": "new-user@behalf.com"
+            }
+            
 + Response 201 (application/json)
 
     + Body
 
             {
+                "token": "BEa094e92215",
+                "type": "signup"
             }
             
             
