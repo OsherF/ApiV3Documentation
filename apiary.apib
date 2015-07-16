@@ -847,14 +847,14 @@ Create a payment entity with basic information. Note that creating a transaction
 
 ### Modify particular aspects of the payment [PATCH]
 Accepted properties:
-* status - can be changed to "declined". Certain workflows may not allow a status to be changed to the requested status.
-
+* status - can be changed to "declined" or "confirm". Certain workflows may not allow a status to be changed to the requested status.
+accepets 'canceled' or 'confirm'
 + Request (application/json)
 
     + Body
     
             {
-                "status": "declined"
+                "status": "canceled"
             }
                 
 + Response 200 (application/json)
