@@ -888,6 +888,73 @@ accepets 'canceled' or 'confirm'
                 }
             }
 
+### Update Payment details [PUT /api/payments/{paymentId}?action=customerUpdate]
+Update the only the repaymentFrequency of an Payment.  This action can only be performed on the customer of the payment  himself, for a vendor with offer Net. 
++ Parameters
+    + action (required, string, `customerUpdate`) 
++ Request (application/json)
+
+    + Body
+            {
+                "paymentId": "006J000000HwiPGIAZ",
+                "repaymentFrequency": "Net",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "Behalf Vendor"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "status": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": null,
+                "messageToBuyer": null,
+                "messageToSeller": null,
+                "referred": false,
+                "submissionDate": "2015-02-22",
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0,
+                "_links": {
+                    "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
+                }
+            }
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            {
+                "paymentId": "006J000000HwiPGIAZ",
+                "repaymentFrequency": "Net",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "Behalf Vendor"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "status": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": null,
+                "messageToBuyer": null,
+                "messageToSeller": null,
+                "referred": false,
+                "submissionDate": "2015-02-22",
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0,
+                "_links": {
+                    "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
+                }
+            }
+
 ## Bank [/api/banks/{bankid}]
 A Bank resource is used to set up repayments for a granted loan. /bank represents a single bank object with current state and properties. An account may only access those bank resources that are directly bound to itself.
 + Parameters
