@@ -895,6 +895,7 @@ Update the only the repaymentFrequency of an Payment.  This action can only be p
 + Request (application/json)
 
     + Body
+    
             {
                 "paymentId": "006J000000HwiPGIAZ",
                 "repaymentFrequency": "Net",
@@ -1009,4 +1010,69 @@ The Patch action is used to modify specific traits of a bank resource. These tra
                 "nameOnAccount": "Ms. Piggy",
                 "primary": true,
                 "status": "Verified"
+            }
+
+## Plans [/api/payments/plans?payment_id={payment_id}&duration={duration}]
+A resource which returns a payment object plans according to given duration in days.
+
+### Get Plans [GET]
++ Parameters
+    + payment_id (required, string, `006J000000Irr2qIAB`) ... Unique identifier of the /payments resource
+    + duration (required, integer, 30) ... Duration in days
+
++ Response 200 (application/json)
+
+    + Body
+            
+            {
+              [
+                "type": <once|weekly|monthly>,
+                "installmentsCount": #,
+                "installmentAmount": #,
+                "save": #,
+                "fee": #,
+                "paymentAmount": #,
+                "total": #,
+                "plan": [
+                  {
+                      "paydate": <ISO8601 formatted date with timezone>,
+                      "amount": #
+                  },
+                  ....
+                ]
+              ],
+              ....
+            }
+            
++ Response 404 (application/json)
+    
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Not found",
+                "status": 404,
+                "detail": "Payment does not exist"
+            }
+
++ Response 403 (application/json)
+    
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Forbidden",
+                "status": 403,
+                "detail": "User is not part of the requested payment"
+            }
+
++ Response 409 (application/json)
+    
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Conflict",
+                "status": 409,
+                "detail": "Payment is not in status draft"
             }
