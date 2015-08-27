@@ -1026,22 +1026,34 @@ A resource which returns a payment object plans according to given duration in d
             
             {
               [
-                "type": <once|weekly|monthly>,
-                "installmentsCount": #,
-                "installmentAmount": #,
-                "save": #,
-                "fee": #,
-                "paymentAmount": #,
-                "total": #,
+                "type": "Monthly",
+                "installmentsCount": 2,
+                "installmentAmount": 154.5,
+                "save": -1,
+                "fee": 10,
+                "paymentAmount": 300,
+                "total": 309,
                 "plan": [
                   {
-                      "paydate": <ISO8601 formatted date with timezone>,
-                      "amount": #
+                      "paydate": 
+                      {
+                        date: "2015-09-14 00:00:00.000000",
+                        timeszone_type: 3,
+                        timezone: "UTC"
+                      },
+                      "amount": 154.5
                   },
-                  ....
+                  {
+                      "paydate": 
+                      {
+                        date: "2015-10-01 00:00:00.000000",
+                        timeszone_type: 3,
+                        timezone: "UTC"
+                      },
+                      "amount": 154.5
+                  },
                 ]
-              ],
-              ....
+              ]
             }
             
 + Response 404 (application/json)
