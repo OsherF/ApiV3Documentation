@@ -758,6 +758,16 @@ get payment entity.
                     }
                 }
             }
++ Response 404 (application/json)
+    
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Not found",
+                "status": 404,
+                "detail": "Payment does not exist"
+            }
 ### Create a new payment [POST]
 
 Create a payment entity with basic information. Note that creating a transaction does not submit it.
