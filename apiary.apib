@@ -717,6 +717,47 @@ A Payment object shows meta information about the payment and its current state.
 
     + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
 
+### get a payment [GET]
+
+get payment entity.
++ Parameters
+    + payment_id (required, string, `006J000000HwiPGIAZ`) ... Unique identifier of the /payments resource
+   
++ Response 200 (applicatio/json)
+
+    + Body
+
+            {
+                "paymentId": "006J000000HwiPGIAZ",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "Behalf Vendor"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "status": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": null,
+                "messageToBuyer": null,
+                "messageToSeller": null,
+                "referred": false,
+                "submissionDate": "2015-02-22",
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0
+                "_links": {
+                    "self": {
+                        "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
+                    },
+                    "tnc": {
+                        "href": "http://www.behalf.com/termsAndConditions"
+                    }
+                }
+            }
 ### Create a new payment [POST]
 
 Create a payment entity with basic information. Note that creating a transaction does not submit it.
