@@ -717,9 +717,10 @@ A Payment object shows meta information about the payment and its current state.
 
     + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
 
-### get a payment [GET]
+### Retrieve a Payment [GET /api/payments/{paymentId}]
 
-get payment entity.
+Retrieve a payment entity according to it's payment Id.
+Payment entities include all the relevant information held by Behalf for a particular payment. This includes a link to the terms and conditions signed by the customer.
    
 + Response 200 (applicatio/json)
 
@@ -766,6 +767,7 @@ get payment entity.
                 "status": 404,
                 "detail": "Payment does not exist"
             }
+
 ### Create a new payment [POST]
 
 Create a payment entity with basic information. Note that creating a transaction does not submit it.
@@ -819,7 +821,7 @@ Create a payment entity with basic information. Note that creating a transaction
                 }
             }
 
-### Get a list of payments [GET]
+### Get a list of payments [GET /api/payments]
 
 + Request (application/json)
 
@@ -1067,7 +1069,7 @@ A resource which returns a payment object plans according to given duration in d
 ### Get Plans [GET]
 + Parameters
     + payment_id (required, string, `006J000000Irr2qIAB`) ... Unique identifier of the /payments resource
-    + duration (required, integer, 30) ... Duration in days
+    + duration (required, number, `30`) ... Duration in days
 
 + Response 200 (application/json)
 
