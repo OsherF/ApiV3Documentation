@@ -36,8 +36,6 @@ Resource removal is done using the DELETE action. Parameters are passed in the q
 # Required headers
 The Behalf API strictly requires several headers to be sent in order to perform authentication and identify legitimate requests. All requests must include the following headers:
 
-**User-Agent**: Contains a string describing the current agent performing the request. This header is used for statistical purposes to indicate browser popularity for continued support
-
 **X-Behalf-Signature**: An authentication signature used for authentication. More details in the authentication section
 
 **Accept**: The client should specify the desired response format. For now, only application/json is supported.
@@ -158,13 +156,13 @@ Public and Private keys for communicating with Behalf can be obtained through ou
 Keys are provided as requested and only a single pair for every single user.
 
 ## Using private keys for request signing
-The credentials signature is based on the User Agent header, URL path, the request body (empty string if none is present) and the query parameters.
+The credentials signature is based on the URL path, the request body (empty string if none is present) and the query parameters.
 
 These strings are concatenated to each other in a particular order. The credentials' secret keys is used to sign the string we created.
 
 The process of creating the signature starts with serializing the request data into a string in a consistent manner:
 
-    <User-Agent><url path><request-body-json | empty string><un-formatted-request-query-parameters | empty string>
+    <url path><request-body-json | empty string><un-formatted-request-query-parameters | empty string>
 
 The generated string is then fed into a sha256 hmac function, keyed by the secret key. The resulting hash is sent in the signature header.
 
@@ -176,17 +174,15 @@ With the key pair
     public my-public-key
     private my-private-key
 
-**User-Agent**: “Testing”
+The string for hashing is:
 
-The concatenated string is:
-
-    "Testing/api/v1/lead/my-lead-id"
+    "/api/v1/lead/my-lead-id"
 
 The private key for signing is “my-private-key”
 
 Run (in php online functions e.g. http://mhash.onlinephpfunctions.com/):
 
-    echo bin2hex(mhash( MHASH_SHA256, "Testing/api/v1/lead/my-lead-id", "my-private-key"));
+    echo bin2hex(mhash( MHASH_SHA256, "/api/v1/lead/my-lead-id", "my-private-key"));
 
 The result is:
 
