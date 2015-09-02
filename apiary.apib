@@ -180,9 +180,13 @@ The string for hashing is:
 
 The private key for signing is “my-private-key”
 
-Run (in php online functions e.g. http://mhash.onlinephpfunctions.com/):
+Run (in php online functions):
 
     echo bin2hex(mhash( MHASH_SHA256, "/api/v1/lead/my-lead-id", "my-private-key"));
+
+OR
+
+    echo hmac_hash( 'sha256', "/api/v1/lead/my-lead-id", "my-private-key");
 
 The result is:
 
