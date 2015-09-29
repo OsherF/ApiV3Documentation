@@ -5,10 +5,10 @@ Behalf API for Vendors aims to expose all available functionality to an authenti
 
 Using this API, a remote system can create new customers, pre-approve them for loans and generate referred payments. In this reference you can find information about the actions Behalf exposes and the data resources the API returns as responses to these requests.
 
-# Standard URL structure
+# Standard URL and Resource structure
 Behalf’s API uses the https scheme only. Requests in http will be completely ignored.
 
-Behalf API requests rely on REST verbs to perform actions or to retrieve information.
+The API calls rely on REST verbs to perform actions or to retrieve information.
 
 Resource creation is done using the POST action, where parameters are passed in the request body:
 
@@ -45,7 +45,7 @@ Some resources’ properties can be modified directly using the PATCH action:
 
 Note that Resource removal (usually done by DELETE action) is not supported.
 
-# Required headers
+# Required Headers
 The Behalf API strictly requires several headers to be sent in order to perform authentication and identify legitimate requests. All requests must include the following headers:
 
 **X-Behalf-Signature**: An authentication signature used for authentication. More details in the authentication section
@@ -54,7 +54,7 @@ The Behalf API strictly requires several headers to be sent in order to perform 
 
 **Content-Type**: *POST*, *PATCH* and *PUT* requests must also specify the body’s format as application/json
 
-# Request parameters
+# Request Parameters
 Parameters used to pass information for requests are strictly defined for their contents. Requests to the API failing to provide legal values are rejected outright.
 
 # Response structure
