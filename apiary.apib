@@ -1,16 +1,16 @@
 FORMAT: 1A
 
 # Behalf API for Vendors - v3
-Behalf's API for Vendors aims to expose all available functionality to an authenticated client (vendor).
+Behalf API for Vendors aims to expose all available functionality to an authenticated client (vendor).
 
-Using this API, a remote system can create new customers, pre-approve customers for loans and generate referred payments. In this reference you can find information about the actions Behalf exposes and the data resources the API returns as responses to these requests.
+Using this API, a remote system can create new customers, pre-approve them for loans and generate referred payments. In this reference you can find information about the actions Behalf exposes and the data resources the API returns as responses to these requests.
 
 # Standard URL structure
 Behalf’s API uses the https scheme only. Requests in http will be completely ignored.
 
 Behalf API requests rely on REST verbs to perform actions or to retrieve information.
 
-Resource creation is done using the POST action. Parameters are passed in the request body.
+Resource creation is done using the POST action, where parameters are passed in the request body:
 
     POST /api/account/
     { "firstName": "firstname",
@@ -19,28 +19,31 @@ Resource creation is done using the POST action. Parameters are passed in the re
          "email": "email"
       },
       "companyDetails": {
-      "name": "company name"
+         "name": "company name"
+      }
     }
 
 
-Read actions are performed using the GET action and the associated query part of the URL.
+Resource data is retrieved using the GET action and the associated query part of the URL:
 
     GET /api/account/{accountId}/terms?vendor={vendorId}
 
-Resource modification is done using the PUT action. Parameters are passed in the request body.
+Resource modification is done using the PUT action, where parameters are passed in the request body:
 
-    PUT /v3/leads/<leadid>
-    {"email": <lead email>}
+    PUT /api/account/{accountId}/personalAddress
+    { "streetAddress": "123rd 9th East st.",
+      "zipCode": "44321",
+      "apt_unit": "12c",
+      "phone": "9718332561"
+    }
 
-Some resources’ properties can be modified directly. Note that some patch commands may refer to elements which are not actually properties.
+Some resources’ properties can be modified directly using the PATCH action:
 
     PATCH /v3/leads/<leadid>
     {"email": <lead email>}
 
 
-Resource removal is done using the DELETE action. Parameters are passed in the query part of the URL. Note that PUT requests will expect an ‘id’ value to be present in the body. This id name may change for different requests.
-
-    DELETE /v3/leads/<leadid>
+Note that Resource removal (usually done by DELETE action) is not supported.
 
 # Required headers
 The Behalf API strictly requires several headers to be sent in order to perform authentication and identify legitimate requests. All requests must include the following headers:
