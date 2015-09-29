@@ -1,22 +1,31 @@
 FORMAT: 1A
 
-# Behalf API v3
-Behalf's API aims to expose all available functionality to an authenticated client.
+# Behalf API for Vendors - v3
+Behalf's API for Vendors aims to expose all available functionality to an authenticated client (vendor).
 
-Using this API, a remote system can create new users, approve customers for loans and generate referred payments. In this reference you can find information about the actions Behalf exposes and the data resources the API returns as responses to these requests.
+Using this API, a remote system can create new customers, pre-approve customers for loans and generate referred payments. In this reference you can find information about the actions Behalf exposes and the data resources the API returns as responses to these requests.
 
 # Standard URL structure
 Behalf’s API uses the https scheme only. Requests in http will be completely ignored.
 
 Behalf API requests rely on REST verbs to perform actions or to retrieve information.
-Read actions are performed using the GET action and associated query part of the URL.
-
-    GET /v3/leads/<leadid>
 
 Resource creation is done using the POST action. Parameters are passed in the request body.
 
-    POST /v3/leads
-    {"email": <lead email>}
+    POST /api/account/
+    { "firstName": "firstname",
+      "lastName": "lastname",
+      "contact": {
+         "email": "email"
+      },
+      "companyDetails": {
+      "name": "company name"
+    }
+
+
+Read actions are performed using the GET action and the associated query part of the URL.
+
+    GET /api/account/{accountId}/terms?vendor={vendorId}
 
 Resource modification is done using the PUT action. Parameters are passed in the request body.
 
