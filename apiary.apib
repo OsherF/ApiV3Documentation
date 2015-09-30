@@ -266,22 +266,24 @@ This is done by a single API call:
          
 # Group Account
 ## Account Resource [/api/v3/account/] 
-Account resource describing a single set of credentials and associated Company. 
+Account resource describes a single set of credentials and an associated Company. 
 This resource is available to authenticated users for posting.
 
 ### Create or Add data to an Account [POST]
-This action creates a new Account resource or adds missing information to an existing one. 
-It cannot be used to override existing information.
-Additionally, this action creates a link between the currently authenticated user and the account.
-A POST to /account can get two affirmative responses - 200 or 201.
+This action creates a new Account resource or adds <strong>missing</strong> information to an existing one. 
+It cannot be used to override/replace <strong>existing</strong> information.
+Additionally, this action creates a link between the currently authenticated user (vendor) and the created account (customer).
 
-The accountBalance property depends on the completion of the qualification step or terms retrieval for the account. Otherwise, this parameter may be 0.
+A POST to /account can get two affirmative responses : 200 or 201.
 
 **The 201 response** indicates the resource was created successfully and the requesting user is linked to the newly created account.
 
-**The 200 response** indicates the resource already existed and the requesting user is now linked to the account.
+**The 200 response** indicates the resource already existed and the requesting user is now linked to that account.
 
 In either case, the same resource is returned. An existing resource will be updated with new information only if that information is missing from the resource. An existing property will not be overridden by a POST.
+
+Note that the "accountBalance" property depends on a completion of Terms retrieval for the account. Before that, this parameter may be 0.
+
 + Request Mandatory parameters only (application/json)
 
     + Body
