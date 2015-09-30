@@ -178,7 +178,7 @@ The X-Behalf-Signature header contains a credentials identifier and a credential
 
 Public and Private keys for communication using Behalf API can be obtained through Behalf's Customer Support service. Only certified vendors and verified customers may obtain keys for integration.
 
-Keys are provided as requested and only a single pair for every single user.
+Keys are provided as requested and only a single pair is provided for every single user.
 
 ## Using Private Key for Request Signing
 The credentials signature is based on the URL path, the request body (empty string if none is present) and the query parameters.
@@ -189,19 +189,19 @@ The process of creating the signature starts with serializing the request data i
 
     <url path><request-body-json | empty string><un-formatted-request-query-parameters | empty string>
 
-The generated string is then fed into a sha256 hmac function, keyed by the secret key. The resulting hash is sent in the signature header.
+The generated string is then fed into a sha256 hmac function, keyed by the private key. The resulting hash is sent in the signature header.
 
 ## Signature Generation Example
-**URL**: https://behalf.com/api/account/my-lead-id
+**URL**: https://behalf.com/api/account/my-account-id
 
-With the key pair
+With the keys pair
 
-    public my-public-key
-    private my-private-key
+    public  "my-public-key"
+    private "my-private-key"
 
 The string for hashing is:
 
-    "/api/account/my-lead-id"
+    "/api/account/my-account-id"
 
 The private key for signing is “my-private-key”
 
@@ -226,9 +226,11 @@ The Behalf API supports a soft versioning policy which provides for changes in b
 
 Any modification of input, output or behavior of an **existing** (and deployed) API must be done on a new version and allow for an essentially different API to replace the old one in the new version. Naturally, the old version must continue to work and keep to its previous behavior regardless of changes to any other version, higher or lower.
 
-Version negotiation is done through the URL path and is required to be specified. An unknown or unsupported version will be rejected outright.
+Version negotiation is done through the URL path and is optional. 
+If Version is not specified within the URL path then the latest API version will be used.
+An unknown or unsupported version will be rejected outright.
 
-The format of the Version (e.g. V3) within the URL path is:
+The format of the Version within the URL path (when used) is:
 
     /api/V3/{......}
 
