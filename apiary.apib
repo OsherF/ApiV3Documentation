@@ -47,7 +47,7 @@ For Example:
       "phone": "9718332561"
     }
 
-Some resources’ properties can be modified directly using the PATCH action.
+Some resources’ properties can be modified directly (or indirectly) using the PATCH action.
 
 For Example:
 
@@ -152,7 +152,7 @@ Specific application errors are returned as 500 errors in the range 530 - 580
 
 The Behalf API supports Hypermedia Links as part of its standard response structure. For more information about Hypermedia Links: http://en.wikipedia.org/wiki/HATEOAS.
 
-For a retrieved resource data (e.g. consumers), the Hypermedia Links that are provided indicate the next available steps for the current resource. Based on these links, a developer or an automated process can explore the API or get indications for the next steps in the current workflow.
+For a retrieved resource data (e.g. consumer), the Hypermedia Links that are provided indicate the next available steps for the current resource. Based on these links, a developer or an automated process can explore the API or get indications for the next steps in the current workflow.
 This next step is described as a hyperlink URL which represents a resource. This resource can be called using http verbs normally. Note that some actions respond only to specific verbs, where an "invalid method error" (405) will be returned if a specific verb is unavailable.
 
 You can always find out what verbs are available by using the OPTIONS http VERB on a resource.
