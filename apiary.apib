@@ -241,7 +241,7 @@ There are four basic workflows commonly used by vendors with the Behalf API:
 In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, 
 <strong>including</strong> customer's Personal and Business addresses. 
 This is done by a single API call:
-- [Create an Account](#reference/account/account-resource/Create-or-Add-data-to-an-Account)
+- [Create an Account](#reference/account/account-resource/Create-an-Account)
 
 Note that some of the customer's details may be changed later, if and when updated, 
 using the API call:
@@ -252,7 +252,7 @@ When the vendor's customer has a Behalf Account - the vendor can get the Terms w
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
-- [Retrieve Account Terms](#reference/account/account-terms/create-or-add-data-to-an-account)
+- [Retrieve Account Terms](#reference/account/account-terms/create-an-account)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
 In those cases the vendor should retry to retrieve the customer's Terms later. 
@@ -275,7 +275,7 @@ This is done by a single API call:
 Account resource describes a single set of credentials and an associated Company. 
 This resource is available to authenticated users for posting.
 
-### Create or Add Data to an Account [POST]
+### Create an Account [POST]
 This action creates a new Account resource or adds <strong>missing</strong> information to an existing one. 
 It cannot be used to override/replace <strong>existing</strong> information.
 Additionally, this action creates a link between the currently authenticated user (vendor) and the created account (customer).
