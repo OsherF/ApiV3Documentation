@@ -603,6 +603,7 @@ The linkId parameter is returned as part of the POST /api/account action
     + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /customer-sales-info resource
 
 ### Retrieve Customer Sales Info [GET]
+Get the customer's sales info which was provided by the authenticated user (vendor).
 
 + Response 200 (application/json)
 
@@ -620,9 +621,11 @@ The linkId parameter is returned as part of the POST /api/account action
                 "avgYtdSalesAmount": 32,
                 "paymentMethod": "COD"
             }
+
  
  
-### Update Customer Sales Info Details [PUT]
+### Update Customer Sales Info [PUT]
+Update the customer's sales info. The Vendor can do that only for <strong>his</strong> customers.
 
 + Request (application/json)
 
