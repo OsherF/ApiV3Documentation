@@ -235,22 +235,20 @@ This is done by a single API call:
 - [Create an Account](#reference/account/account-resource/Create-or-Add-data-to-an-Account)
 
 Note that the customer's addresses may be changed later, if updated, using 
-- [Update Personal Address](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-personal-address)
-- [Update Business Address](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-business-address)
-
+- [Update Personal Address](#reference/account/account-personal-address)
+- [Update Business Address](#reference/account/account-business-address)
 
 ## Get Behalf's Terms for a Customer
 When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. 
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
-- [Retrieve Account Terms](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-terms)
+- [Retrieve Account Terms](#reference/account/account-terms)
 
 ## Refer a New Payment to Behalf Customer
 A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
 This is done with a single API call:
-- [Create a New Payment](http://docs.behalfapiforvendorsv3.apiary.io/#reference/pay/payments/create-a-new-payment)
-
+- [Create a New Payment](#reference/pay/payments/create-a-new-payment)
 
 ## Get Payment's Status
 
@@ -725,7 +723,7 @@ The linkId parameter is returned as part of the POST /api/account action
                 "paymentMethod": "COD"
             }
             
-# Group Pay
+# Group Payments
 All action URLs are assumed to have the /api prefix. This path directory is omitted from the examples and resource names for brevity.
 
 ## Payments [/api/payments/{paymentId}]
@@ -735,57 +733,6 @@ A Payment object shows meta information about the payment and its current state.
 + Parameters
 
     + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
-
-### Retrieve a Payment [GET /api/payments/{paymentId}]
-
-Retrieve a payment entity according to it's payment Id.
-Payment entities include all the relevant information held by Behalf for a particular payment. This includes a link to the terms and conditions signed by the customer.
-   
-+ Response 200 (applicatio/json)
-
-    + Body
-
-            {
-                "paymentId": "006J000000HwiPGIAZ",
-                "supplierCompanyId": "001J0000011DTrDIAW",
-                "customerCompanyId": "001J000001YxXxwIAF",
-                "supplierCompany": {
-                    "name": "Behalf Vendor"
-                },
-                "customerBankId": "a06J000000Bqqn4IAB",
-                "amount": 345,
-                "status": "DRAFT",
-                "termsAndConditions": false,
-                "orderId": null,
-                "messageToBuyer": null,
-                "messageToSeller": null,
-                "referred": false,
-                "submissionDate": "2015-02-22",
-                "initialDate": "2015-02-22",
-                "payDate": null,
-                "payoutMethod": "Virtual Card",
-                "totalToCollect": 357,
-                "outstandingAmount": 357,
-                "numSetteledRepayments": 0
-                "_links": {
-                    "self": {
-                        "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
-                    },
-                    "tnc": {
-                        "href": "http://www.behalf.com/termsAndConditions"
-                    }
-                }
-            }
-+ Response 404 (application/json)
-    
-    + Body
-    
-            {
-                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
-                "title": "Not found",
-                "status": 404,
-                "detail": "Payment does not exist"
-            }
 
 ### Create a new payment [POST]
 
@@ -838,6 +785,58 @@ Create a payment entity with basic information. Note that creating a transaction
                         "href": "http://www.behalf.com/termsAndConditions"
                     }
                 }
+            }
+
+
+### Retrieve a Payment [GET /api/payments/{paymentId}]
+
+Retrieve a payment entity according to it's payment Id.
+Payment entities include all the relevant information held by Behalf for a particular payment. This includes a link to the terms and conditions signed by the customer.
+   
++ Response 200 (applicatio/json)
+
+    + Body
+
+            {
+                "paymentId": "006J000000HwiPGIAZ",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "Behalf Vendor"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "status": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": null,
+                "messageToBuyer": null,
+                "messageToSeller": null,
+                "referred": false,
+                "submissionDate": "2015-02-22",
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0
+                "_links": {
+                    "self": {
+                        "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
+                    },
+                    "tnc": {
+                        "href": "http://www.behalf.com/termsAndConditions"
+                    }
+                }
+            }
++ Response 404 (application/json)
+    
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Not found",
+                "status": 404,
+                "detail": "Payment does not exist"
             }
 
 ### Get a list of payments [GET /api/payments]
