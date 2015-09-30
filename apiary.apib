@@ -220,7 +220,7 @@ The format of the Version (e.g. V3) within the URL path is:
 
     /api/V3/{......}
 
-# Workflows
+# Basic Workflows
 There are four basic workflows commonly used by vendors with the Behalf API:
 
 - Create a new Behalf Customer
@@ -238,7 +238,9 @@ In order to offer Behalf Terms to his customer, a vendor should first create a B
 - Update Business Address
 
 More details regarding these calls are found in the Reference section.
+
 ## Get Behalf's Terms for a Customer
+When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. The Terms include the Credit-Line, Max Duration, Pricing and available Repayment Plans. 
 ## Refer a New Payment to Behalf Customer
 ## Get Payment's Status
 A token represents a user tracked action that is expected to lead to a particular system workflow, such as sign up or other conversion of state.
