@@ -191,19 +191,18 @@ The process of creating the signature starts with serializing the request data i
 
 The generated string is then fed into a sha256 hmac function, keyed by the private key. The resulting hash is sent in the signature header.
 
-## Signature Generation Example
-**URL**: https://behalf.com/api/account/my-account-id
+## Signature Generation Example:
+URL:
 
-With the keys pair
+    https://behalf.com/api/account/my-account-id
 
-    public  "my-public-key"
-    private "my-private-key"
+With the Private Key:
+
+    "my-private-key"
 
 The string for hashing is:
 
     "/api/account/my-account-id"
-
-The private key for signing is “my-private-key”
 
 Run (in php online functions):
 
@@ -217,7 +216,7 @@ The Signing result (created in http://sandbox.onlinephpfunctions.com/) is:
 
     927af76b39e6498b0704cadc0b9a7e91a6bca18e227dadc34a3ee88e83b2cb8d
 
-Thus the resulting X-Behalf-Signature header is
+Thus the resulting X-Behalf-Signature header is:
 
     X-Behalf-Signature: my-public-key;927af76b39e6498b0704cadc0b9a7e91a6bca18e227dadc34a3ee88e83b2cb8d
 
