@@ -8,13 +8,14 @@ Using this API, a remote system can create new Behalf customers, pre-approve the
 In this reference you can find information about the actions Behalf exposes and the data resources the API returns as responses to these requests.
 
 # URL and REST Structure
-Behalf’s API uses the https scheme only. Requests in http will be completely ignored.
+Behalf’s API uses the secured https scheme only. Requests in http will be completely ignored.
 
-All calls are sent to the Behalf domain  "behalf.com" , and for convenience reasons the prefix  <strong>https://behalf.com</strong> is omitted in all URL references. 
+All calls are sent to the Behalf domain  "behalf.com" , and for convenience reasons the prefix  <strong>https://behalf.com</strong> is omitted in all URLs mentioned in this document. 
 
-The Behalf API calls rely on REST verbs to perform actions or to retrieve information.
+The Behalf API calls rely on REST verbs to perform actions or to retrieve information:
 
-Resource creation is done using the POST action, where parameters are passed in the request body:
+Resource creation is done using the POST action, where parameters are passed in the request body.
+For Example:
 
     POST /api/account/
     { "firstName": "firstname",
@@ -28,11 +29,13 @@ Resource creation is done using the POST action, where parameters are passed in 
     }
 
 
-Resource data is retrieved using the GET action and the associated query part of the URL:
+Resource data is retrieved using the GET action and the associated query part of the URL.
+For Example:
 
     GET /api/account/{accountId}/terms?vendor={vendorId}
 
-Resource modification is done using the PUT action, where parameters are passed in the request body:
+Resource modification is done using the PUT action, where parameters are passed in the request body.
+For Example:
 
     PUT /api/account/{accountId}/personalAddress
     { "streetAddress": "123rd 9th East st.",
@@ -41,14 +44,15 @@ Resource modification is done using the PUT action, where parameters are passed 
       "phone": "9718332561"
     }
 
-Some resources’ properties can be modified directly using the PATCH action:
+Some resources’ properties can be modified directly using the PATCH action.
+For Example:
 
     PATCH /api/banks/{bankid}
     { "primary": true
     }
 
 
-Note that Resource removal (usually done by the DELETE action) is not supported.
+Note that Resource removal (usually done by the DELETE action) is not used in this version.
 
 # Required Headers
 The Behalf API strictly requires several headers to be sent in order to perform authentication and identify legitimate requests. All requests must include the following headers:
