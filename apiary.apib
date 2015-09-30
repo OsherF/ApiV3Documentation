@@ -232,11 +232,11 @@ There are four basic workflows commonly used by vendors with the Behalf API:
 In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, 
 <strong>including</strong> customer's Personal and Business addresses. 
 This is done by a single API call:
-- [Create an Account](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-resource/Create-or-Add-data-to-an-Account)
+- [Create an Account](#reference/account/account-resource/Create-or-Add-data-to-an-Account)
 
 Note that the customer's addresses may be changed later, if updated, using 
-- [Update Personal Address](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-personal-address/update-personal-address)
-- [Update Business Address](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-business-address/update-business-address)
+- [Update Personal Address](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-personal-address)
+- [Update Business Address](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-business-address)
 
 
 ## Get Behalf's Terms for a Customer
@@ -244,12 +244,12 @@ When the vendor's customer has a Behalf Account - the vendor can get the Terms w
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
-- [Retrieve Account Terms]
+- [Retrieve Account Terms](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-terms)
 
 ## Refer a New Payment to Behalf Customer
 A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
 This is done with a single API call:
-- [Create a New Payment]
+- [Create a New Payment](http://docs.behalfapiforvendorsv3.apiary.io/#reference/pay/payments/create-a-new-payment)
 
 
 ## Get Payment's Status
