@@ -15,6 +15,7 @@ All calls are sent to the Behalf domain  "behalf.com" , and for convenience reas
 The Behalf API calls rely on REST verbs to perform actions or to retrieve information:
 
 Resource creation is done using the POST action, where parameters are passed in the request body.
+
 For Example:
 
     POST /api/account/
@@ -30,11 +31,13 @@ For Example:
 
 
 Resource data is retrieved using the GET action and the associated query part of the URL.
+
 For Example:
 
     GET /api/account/{accountId}/terms?vendor={vendorId}
 
 Resource modification is done using the PUT action, where parameters are passed in the request body.
+
 For Example:
 
     PUT /api/account/{accountId}/personalAddress
@@ -45,6 +48,7 @@ For Example:
     }
 
 Some resources’ properties can be modified directly using the PATCH action.
+
 For Example:
 
     PATCH /api/banks/{bankid}
@@ -91,7 +95,7 @@ Response codes indicate the way the requested action was handled:
 
 **201**: Created - standard response to a POST action which also indicates that resource creation is also completed
 
-**202**: Accepted - The action is queued and will be executed. The http status message will include the queue ID of the action. 
+**202**: Accepted - The action is queued and will be executed. 
 
 Errors are indicated by http response code along with a corresponding human readable message. Additional details will be attached as a JSON encoded resource structure.
 
