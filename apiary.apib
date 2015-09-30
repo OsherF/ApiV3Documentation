@@ -521,10 +521,12 @@ Account subresource that describes the account's available Behalf Terms. The ven
 
 ### Create Account Terms [POST]
 Creates a Terms resource for the requested account. This action may cause terms to be recalcualted for that account.
+
 Note that in some cases the Terms calculation may take up to a couple of minutes.
-In those cases the Response will have Code 202 - "Request is In Process" - and the Terms properties will not be set.
+In those cases the Response will have Code <strong>202</strong> - "Request is In Process" - and the Terms properties will not be set.
 The user (vendor) will have to post this request again in a later time (e.g. within 2-3 minutes) in order to get the Terms details.
-In case the customer is not entitled for Behalf Terms - the Response will inclusde Code 532.
+
+In case the customer is not entitled for Behalf Terms - the Response will inclusde Code <strong>532</strong>.
 
 + Response 200 (application/json)
 
