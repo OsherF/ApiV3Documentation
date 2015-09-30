@@ -480,7 +480,9 @@ Note that the "accountBalance" property depends on a completion of Terms retriev
 
 
 ### Update Account Details [PUT /api/account/{accountId}]
-Update the details of an account. This action can be performed by a user (vendor) only on <strong>his</strong> customers' accounts, and only <strong>before</strong> the account has passed the signup process. After signup, a vendor can not make any changes to a customer's account.
+Update the details of an account. This action can be performed by a vendor only on <strong>his</strong> customers' accounts, 
+and only <strong>before</strong> an account has passed the signup process. 
+After signup, a vendor can not make any changes to a customer's account.
 + Parameters
     + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
 
