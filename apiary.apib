@@ -232,7 +232,7 @@ There are four basic workflows commonly used by vendors with the Behalf API:
 In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, 
 and add the customer's personal and business addresses to that account. 
 This is done by 3 consecutive API calls:
-- [Create an Account](http://docs.behalfapiforvendorsv3.apiary.io/#Account Resource)
+- [Create an Account](http://docs.behalfapiforvendorsv3.apiary.io/#reference/account/account-resource/Create-or-Add-data-to-an-Account)
 - Update Personal Address
 - Update Business Address
 
@@ -258,9 +258,212 @@ More details regarding this call are found in the Reference section.
 More details regarding this call are found in the Reference section.
 
          
-# Group Members
+# Group Account
 ## Account Resource [/api/v3/account/] 
-Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
+Account resource describing a single set of credentials and associated Company. 
+This resource is available to authenticated users for posting.
+
+### Create or Add data to an Account [POST]
+This action creates a new Account resource or adds missing information to an existing one. 
+It cannot be used to override existing information.
+Additionally, this action creates a link between the currently authenticated user and the account.
+A POST to /account can get two affirmative responses - 200 or 201.
+
+The accountBalance property depends on the completion of the qualification step or terms retrieval for the account. Otherwise, this parameter may be 0.
+
+**The 201 response** indicates the resource was created successfully and the requesting user is linked to the newly created account.
+
+**The 200 response** indicates the resource already existed and the requesting user is now linked to the account.
+
+In either case, the same resource is returned. An existing resource will be updated with new information only if that information is missing from the resource. An existing property will not be overridden by a POST.
++ Request Mandatory parameters only (application/json)
+
+    + Body
+
+            {
+                "firstName": "firstname",
+                "lastName":  "lastname",
+                "contact": {"email":"email"},
+                "companyDetails": {"name": "company name"}
+            }
+    
+    + Schema
+
+            {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "firstName": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "contact": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    },
+                    "companyDetails": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                }
+            }
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            {
+                "accountId": "account-id",
+                "firstName": "firstname",
+                "lastName": "lastname",
+                "contact":{
+                    "contactId": "contact-id", "email":"email"
+                },
+                "companyDetails": {
+                    "name": "company name",
+                },
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/account-id"
+                    },
+                    "terms": {
+                        "href": "https://behalf.com/api/account/account-id/terms"
+                    },
+                    "customer-sales": {
+                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    }
+                }
+            }
+
++ Response 201 (application/json)
+    
+    + Body
+    
+            {
+                "accountId": "account-id",
+                "firstName": "firstname",
+                "lastName": "lastname",
+                "contact":{
+                    "contactId": "contact-id", "email":"email"
+                },
+                "companyDetails": {
+                    "name": "company name",
+                },
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/account-id"
+                    },
+                    "terms": {
+                        "href": "https://behalf.com/api/account/account-id/terms"
+                    },
+                    "customer-sales": {
+                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    }
+                }
+            }
+
++ Request All available parameters (application/json)
+    
+    + Body
+    
+            {
+                "firstName": "firstname",
+                "lastName":  "lastname",
+                "contact": {"email":"email"},
+                "companyDetails": {
+                    "name": "company name",
+                    "duns": "DUNS number",
+                    "tin": "TIN code",
+                    "website": "http://website.com",
+                    "inceptionDate": "2002-12-25" //Also accepts unix timestamp
+                },
+                "ssn": "123456781",
+                "businessAddress": {
+                    "streetAddress": "",
+                    "zipcode": "",
+                    "apt_unit": "",
+                    "phone": ""
+                },
+                "personalAddress": {
+                    "streetAddress": "",
+                    "zipcode": "",
+                    "apt_unit": "",
+                    "phone": ""
+                }
+            }
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            {
+                "accountId": "account-id",
+                "firstName": "firstname",
+                "lastName": "lastname",
+                "contact":{
+                    "contactId": "contact-id", "email":"email"
+                },
+                "companyDetails": {
+                    "name": "company name",
+                },
+                "accountBalance": 2100,
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/account-id"
+                    },
+                    "terms": {
+                        "href": "https://behalf.com/api/account/account-id/terms"
+                    },
+                    "customer-sales": {
+                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    }
+                }
+            }
+
++ Response 201 (application/json)
+    
+    + Body
+    
+            {
+                "accountId": "account-id",
+                "firstName": "firstname",
+                "lastName": "lastname",
+                "contact":{
+                    "contactId": "contact-id", "email":"email"
+                },
+                "companyDetails": {
+                    "name": "company name",
+                },
+                "accountBalance": 0,
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/account-id"
+                    },
+                    "terms": {
+                        "href": "https://behalf.com/api/account/account-id/terms"
+                    },
+                    "customer-sales": {
+                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    }
+                }
+            }
+
 
 ### Update Account details [PUT /api/account/{accountId}]
 Update the details of an account. This action can only be performed on the authenticated user himself or by a linked vendor before the account has passed the signup process. After signup, a vendor may not make changes to a customer's account.
