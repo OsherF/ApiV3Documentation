@@ -184,7 +184,7 @@ The process of creating the signature starts with serializing the request data i
 The generated string is then fed into a sha256 hmac function, keyed by the secret key. The resulting hash is sent in the signature header.
 
 ## Signature Generation Example
-**URL**: https://behalf.com/api/v1/lead/my-lead-id
+**URL**: https://behalf.com/api/account/my-lead-id
 
 With the key pair
 
@@ -193,25 +193,25 @@ With the key pair
 
 The string for hashing is:
 
-    "/api/v1/lead/my-lead-id"
+    "/api/account/my-lead-id"
 
 The private key for signing is “my-private-key”
 
 Run (in php online functions):
 
-    echo bin2hex(mhash( MHASH_SHA256, "/api/v1/lead/my-lead-id", "my-private-key"));
+    echo bin2hex(mhash( MHASH_SHA256, "/api/account/my-account-id", "my-private-key"));
 
 OR
 
-    echo hmac_hash( 'sha256', "/api/v1/lead/my-lead-id", "my-private-key");
+    echo hmac_hash( 'sha256', "/api/account/my-account-id", "my-private-key");
 
-The Signing result is:
+The Signing result (created in http://sandbox.onlinephpfunctions.com/) is:
 
-    f8bd1e5925e00ed709d66e1ff6fd49949836977d124a21de3e19f887896fdd72
+    927af76b39e6498b0704cadc0b9a7e91a6bca18e227dadc34a3ee88e83b2cb8d
 
-The resulting X-Behalf-Signature header is
+Thus the resulting X-Behalf-Signature header is
 
-    X-Behalf-Signature: my-public-key;f8bd1e5925e00ed709d66e1ff6fd49949836977d124a21de3e19f887896fdd72
+    X-Behalf-Signature: my-public-key;927af76b39e6498b0704cadc0b9a7e91a6bca18e227dadc34a3ee88e83b2cb8d
 
 # Versioning
 The Behalf API supports a soft versioning policy which provides for changes in behavior, input and output options. Soft versioning means that output and input may be modified as long as it keeps backwards compatibility by not modifying or removing existing elements. Behalf is allowed to add new **optional** parameters or **new** output elements without changing the version of the API.
@@ -239,8 +239,6 @@ This is done by a single API call:
 - [Create an Account](#reference/account/account-resource/Create-or-Add-data-to-an-Account)
 
 Note that the customer's addresses may be changed later, if updated, using 
-- [Update Personal Address](#reference/account/account-personal-address)
-- [Update Business Address](#reference/account/account-business-address)
 
 ## Get Behalf's Terms for a Customer
 When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. 
@@ -250,7 +248,7 @@ The customer's Terms are retrived using a single API call:
 - [Retrieve Account Terms](#reference/account/account-terms)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
-If those cases the vendor should retry to retrieve the customer's Terms later. 
+In those cases the vendor should retry to retrieve the customer's Terms later. 
 
 ## Refer a New Payment to Behalf Customer
 A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
