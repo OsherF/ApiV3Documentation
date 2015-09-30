@@ -21,12 +21,8 @@ For Example:
     POST /api/account/
     { "firstName": "firstname",
       "lastName": "lastname",
-      "contact": {
-         "email": "email"
-      },
-      "companyDetails": {
-         "name": "company name"
-      }
+      "contact": {"email": "email"},
+      "companyDetails": {"name": "company name"}
     }
 
 
@@ -247,7 +243,7 @@ In order to offer Behalf Terms to his customer, a vendor should first create a B
 This is done by a single API call:
 - [Create an Account](#reference/account/account-resource/Create-or-Add-data-to-an-Account)
 
-Note that the customer's addresses may be changed later, if updated, using 
+Note that some customer's details may be changed later, if updated, using [Update Account Details](#reference/account/account-resource/update-account-details)
 
 ## Get Behalf Terms for a Customer
 When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. 
@@ -272,16 +268,17 @@ This is done by a single API call:
 - [Retrieve a Payment](#reference/payment/payment-resource/retrieve-a-payment)
          
 # Group Account
-## Account Resource [/api/v3/account/] 
+
+## Account Resource [/api/account/] 
 Account resource describes a single set of credentials and an associated Company. 
 This resource is available to authenticated users for posting.
 
-### Create or Add data to an Account [POST]
+### Create or Add Data to an Account [POST]
 This action creates a new Account resource or adds <strong>missing</strong> information to an existing one. 
 It cannot be used to override/replace <strong>existing</strong> information.
 Additionally, this action creates a link between the currently authenticated user (vendor) and the created account (customer).
 
-A POST to /account can get two affirmative responses : 200 or 201.
+A POST to /account can get two affirmative responses : 200 or 201
 
 **The 201 response** indicates the resource was created successfully and the requesting user is linked to the newly created account.
 
@@ -512,112 +509,6 @@ Update the details of an account. This action can only be performed on the authe
                 }
             }
 
-### Retrieve a List of Accounts [GET /api/account{?query}]
-
-This action retrieves a list of account elements linked to the authenticated user of the request.
-
-+ Parameters
-
-    + query (optional, string) ... Search pattern when searching for account information
-
-+ Request (application/json)
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "_links": {
-                    "self": {
-                        "href": "https://www.behalf.com/api/account?page=1"
-                    },
-                    "first": {
-                        "href": "https://www.behalf.com/api/account"
-                    },
-                    "last": {
-                        "href": "https://www.behalf.com/api/account?page=1"
-                    }
-                },
-                "_embedded": {
-                    "account": [
-                        {
-                            "accountId": "account-id",
-                            "firstName": "firstname",
-                            "lastName": "lastname",
-                            "contact":{
-                                "contactId": "contact-id", "email":"email"
-                            },
-                            "companyDetails": {
-                                "name": "company name",
-                            },
-                            "accountBalance": 2100
-                        }
-                    ]
-                },
-                "page_count": 1,
-                "page_size": 25,
-                "total_items": 1
-            }
-
-## Account Personal Address [/api/account/{accountId}/personalAddress]
-An account's personal address sub-resource. This resource contains location and contact details of the account's owner
-+ Parameters
-    + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
-
-### Update Personal Address [PUT]
-
-+ Request (application/json)
-    
-    + Body
-    
-            {
-                "streetAddress": "123rd 9th East st.",
-                "zipCode": "44321",
-                "apt_unit": "12c",
-                "phone": "9718332561"
-            }
-            
-+ Response 200 (application/json)
-    
-    + Body
-    
-            {
-                "accountId": "BHae12d442123",
-                "streetAddress": "123rd 9th East st.",
-                "zipCode": "44321",
-                "apt_unit": "12c",
-                "phone": "9718332561"
-            }
-
-## Account Business Address [/api/account/{accountId}/businessAddress]
-An account's business address sub-resource. This resource contains location and contact details of the account's business or company
-+ Parameters
-    + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
-
-### Update Business Address [PUT]
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "streetAddress": "123rd 9th East st.",
-                "zipCode": "44321",
-                "apt_unit": "12c",
-                "phone": "9718332561"
-            }
-            
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "accountId": "BHae12d442123",
-                "streetAddress": "123rd 9th East st.",
-                "zipCode": "44321",
-                "apt_unit": "12c",
-                "phone": "9718332561"
-            }
 
 ## Account Terms [/api/account/{accountId}/terms{?vendor}]
 Account subresource that describes the account's available terms. This resource is only available to authenticated linked users or to the owner of the account.
