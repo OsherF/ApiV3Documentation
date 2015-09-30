@@ -16,7 +16,7 @@ The Behalf API calls rely on REST verbs to perform actions or to retrieve inform
 
 Resource creation is done using the POST action, where parameters are passed in the request body:
 
-    POST /api/v3/account/
+    POST /api/account/
     { "firstName": "firstname",
       "lastName": "lastname",
       "contact": {
@@ -30,11 +30,11 @@ Resource creation is done using the POST action, where parameters are passed in 
 
 Resource data is retrieved using the GET action and the associated query part of the URL:
 
-    GET /api/v3/account/{accountId}/terms?vendor={vendorId}
+    GET /api/account/{accountId}/terms?vendor={vendorId}
 
 Resource modification is done using the PUT action, where parameters are passed in the request body:
 
-    PUT /api/v3/account/{accountId}/personalAddress
+    PUT /api/account/{accountId}/personalAddress
     { "streetAddress": "123rd 9th East st.",
       "zipCode": "44321",
       "apt_unit": "12c",
@@ -43,7 +43,7 @@ Resource modification is done using the PUT action, where parameters are passed 
 
 Some resources’ properties can be modified directly using the PATCH action:
 
-    PATCH /api/v3/banks/{bankid}
+    PATCH /api/banks/{bankid}
     { "primary": true
     }
 
@@ -153,13 +153,13 @@ Hypermedia Links structure example:
 
     "_links": {
         "self": {
-            "href": "https://behalf.com/api/v3/account/{accountId}"
+            "href": "https://behalf.com/api/account/{accountId}"
         },
         "terms": {
-            "href": "https://behalf.com/api/v3/account/{accountId}/terms"
+            "href": "https://behalf.com/api/account/{accountId}/terms"
         },
         "customer-sales": {
-            "href": "https://behalf.com/api/v3/customer-sales-info/{linkId}"
+            "href": "https://behalf.com/api/customer-sales-info/{linkId}"
         }
     }
 
@@ -471,7 +471,7 @@ Note that the "accountBalance" property depends on a completion of Terms retriev
             }
 
 
-### Update Account Details [PUT /api/v3/account/{accountId}]
+### Update Account Details [PUT /api/account/{accountId}]
 Update the details of an account. This action can only be performed on the authenticated user himself or by a linked vendor before the account has passed the signup process. After signup, a vendor may not make changes to a customer's account.
 + Parameters
     + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
@@ -503,7 +503,7 @@ Update the details of an account. This action can only be performed on the authe
                 }
             }
 
-### Retrieve a List of Accounts [GET /api/v3/account{?query}]
+### Retrieve a List of Accounts [GET /api/account{?query}]
 
 This action retrieves a list of account elements linked to the authenticated user of the request.
 
@@ -550,7 +550,7 @@ This action retrieves a list of account elements linked to the authenticated use
                 "total_items": 1
             }
 
-## Account Personal Address [/api/v3/account/{accountId}/personalAddress]
+## Account Personal Address [/api/account/{accountId}/personalAddress]
 An account's personal address sub-resource. This resource contains location and contact details of the account's owner
 + Parameters
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
@@ -580,7 +580,7 @@ An account's personal address sub-resource. This resource contains location and 
                 "phone": "9718332561"
             }
 
-## Account Business Address [/api/v3/account/{accountId}/businessAddress]
+## Account Business Address [/api/account/{accountId}/businessAddress]
 An account's business address sub-resource. This resource contains location and contact details of the account's business or company
 + Parameters
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
@@ -610,7 +610,7 @@ An account's business address sub-resource. This resource contains location and 
                 "phone": "9718332561"
             }
 
-## Account Terms [/api/v3/account/{accountId}/terms{?vendor}]
+## Account Terms [/api/account/{accountId}/terms{?vendor}]
 Account subresource that describes the account's available terms. This resource is only available to authenticated linked users or to the owner of the account.
 + Parameters
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
@@ -676,7 +676,7 @@ If a vendor is specified, the terms are provided for an expected transaction bet
                 "detail": "The account was declined a credit line"
             }
 
-## Customer Sales Info [/api/v3/customer-sales-info/{linkId}]
+## Customer Sales Info [/api/customer-sales-info/{linkId}]
 A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer, from the vendor's point of view.
 The linkId parameter is returned as part of the POST /api/account action
 + Parameters
@@ -736,7 +736,7 @@ The linkId parameter is returned as part of the POST /api/account action
             
 # Group Payment
 
-## Payment Resource [/api/v3/payments/{paymentId}]
+## Payment Resource [/api/payments/{paymentId}]
 A resource that describes a transaction between a customer and a vendor.
 A Payment object shows meta information about the payment and its current state. This object is used as the basis for repayment plans and enforcing the lifecycle of a transaction.
 
@@ -798,7 +798,7 @@ Create a payment entity with basic information. Note that creating a transaction
             }
 
 
-### Retrieve a Payment [GET /api/v3/payments/{paymentId}]
+### Retrieve a Payment [GET /api/payments/{paymentId}]
 
 Retrieve a payment entity according to it's payment Id.
 Payment entities include all the relevant information held by Behalf for a particular payment. This includes a link to the terms and conditions signed by the customer.
@@ -849,80 +849,6 @@ Payment entities include all the relevant information held by Behalf for a parti
                 "detail": "Payment does not exist"
             }
 
-### Get a List of Payments [GET /api/v3/payments]
-
-+ Request (application/json)
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "_links": {
-                    "self": {
-                        "href": "https://www.behalf.com/api/payments?page=1"
-                    },
-                    "first": {
-                        "href": "https://www.behalf.com/api/payments"
-                    },
-                    "last": {
-                        "href": "https://www.behalf.com/api/payments?page=1"
-                    }
-                },
-                "_embedded": {
-                    "payments": [
-                       {
-                            "paymentId": "006J000000HwiPGIAZ",
-                            "supplierCompanyId": "001J0000011DTrDIAW",
-                            "customerCompanyId": "001J000001YxXxwIAF",
-                            "supplierCompany": {
-                                "name": "Behalf Vendor"
-                            },
-                            "customerBankId": "a06J000000Bqqn4IAB",
-                            "amount": 345,
-                            "status": "DRAFT",
-                            "termsAndConditions": false,
-                            "orderId": null,
-                            "messageToBuyer": null,
-                            "messageToSeller": null,
-                            "referred": false,
-                            "submissionDate": "2015-02-22",
-                            "initialDate": "2015-02-22",
-                            "payDate": null,
-                            "payoutMethod": "Virtual Card",
-                            "totalToCollect": 357,
-                            "outstandingAmount": 357,
-                            "numSetteledRepayments": 0
-                        },
-                        {
-                            "paymentId": "006J000000HwiPGIAZ",
-                            "supplierCompanyId": "001J0000011DTrDIAW",
-                            "customerCompanyId": "001J000001YxXxwIAF",
-                            "supplierCompany": {
-                                "name": "Behalf Vendor"
-                            },
-                            "customerBankId": "a06J000000Bqqn4IAB",
-                            "amount": 345,
-                            "status": "DRAFT",
-                            "termsAndConditions": false,
-                            "orderId": null,
-                            "messageToBuyer": null,
-                            "messageToSeller": null,
-                            "referred": false,
-                            "submissionDate": "2015-02-22",
-                            "initialDate": "2015-02-22",
-                            "payDate": null,
-                            "payoutMethod": "Virtual Card",
-                            "totalToCollect": 357,
-                            "outstandingAmount": 357,
-                            "numSetteledRepayments": 0
-                        }
-                    ]
-                },
-                "page_count": 1,
-                "page_size": 25,
-                "total_items": 6
-            }
 
 ### Step Payment Workflow [PATCH]
 Accepted properties:
@@ -967,8 +893,8 @@ accepets 'canceled' or 'confirm'
                 }
             }
 
-### Update Payment Details [PUT /api/v3/payments/{paymentId}?action=customerUpdate]
-Update the only the repaymentFrequency of an Payment.  This action can only be performed on the customer of the payment  himself, for a vendor with offer Net. 
+### Update Payment Details [PUT /api/payments/{paymentId}?action=customerUpdate]
+Update only the "repaymentFrequency" property of an Payment.  This action can only be performed on the customer of the payment  himself, for a vendor with offer Net. 
 + Parameters
     + action (required, string, `customerUpdate`) 
 + Request (application/json)
