@@ -201,20 +201,24 @@ OR
 
     echo hmac_hash( 'sha256', "/api/v1/lead/my-lead-id", "my-private-key");
 
-The result is:
+The Signing result is:
 
     f8bd1e5925e00ed709d66e1ff6fd49949836977d124a21de3e19f887896fdd72
 
-The X-Behalf-Signature header is
+The resulting X-Behalf-Signature header is
 
     X-Behalf-Signature: my-public-key;f8bd1e5925e00ed709d66e1ff6fd49949836977d124a21de3e19f887896fdd72
 
 # Versioning
-The Behalf API supports a soft versioning policy which provides for changes in behavior, input and output options. Soft versioning means that output and input may be modified as long as it keeps backwards compatibility by not modifying or removing existing elements. Behalf is allowed to add new optional parameters or new output elements without changing the version of the API.
+The Behalf API supports a soft versioning policy which provides for changes in behavior, input and output options. Soft versioning means that output and input may be modified as long as it keeps backwards compatibility by not modifying or removing existing elements. Behalf is allowed to add new **optional** parameters or **new** output elements without changing the version of the API.
 
-Any modification of input, output or behavior of an existing (and deployed) API must be done on a new version and allow for an essentially different API to replace the old one in the new version. Naturally, the old version must continue to work and keep to its previous behavior regardless of changes to any other version, higher or lower.
+Any modification of input, output or behavior of an **existing** (and deployed) API must be done on a new version and allow for an essentially different API to replace the old one in the new version. Naturally, the old version must continue to work and keep to its previous behavior regardless of changes to any other version, higher or lower.
 
 Version negotiation is done through the URL path and is required to be specified. An unknown or unsupported version will be rejected outright.
+
+The format of the Version (e.g. V3) within the URL path is:
+
+    /api/V3/{......}
 
 
 # Group Workflow
