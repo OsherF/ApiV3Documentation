@@ -252,7 +252,7 @@ When the vendor's customer has a Behalf Account - the vendor can get the Terms w
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
-- [Retrieve Account Terms](#reference/account/account-terms/create-an-account)
+- [Create Account Terms](#reference/account/account-terms/create-an-account)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
 In those cases the vendor should retry to retrieve the customer's Terms later. 
@@ -514,15 +514,13 @@ After signup, a vendor can not make any changes to a customer's account.
             }
 
 
-## Account Terms [/api/account/{accountId}/terms{?vendor}]
-Account subresource that describes the account's available terms. This resource is only available to authenticated linked users or to the owner of the account.
+## Account Terms Resource [/api/account/{accountId}/terms]
+Account subresource that describes the account's available Behalf Terms. The vendor can use this resource only for <strong>his</strong> customers.
 + Parameters
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
-    + vendor (optional, string, `BHae12d442123`) ... Unique identifier of the vendor to cross terms with. Can also accept 'me' value.
 
-### Retrieve Account Terms [GET]
-Retrieve a terms resource for the requested account. This action may cause terms to be recalcualted for the account.
-If a vendor is specified, the terms are provided for an expected transaction between the customer's account and the specified vendor.
+### Create Account Terms [POST]
+Creates a Terms resource for the requested account. This action may cause terms to be recalcualted for that account.
 + Response 200 (application/json)
 
         {
@@ -539,7 +537,7 @@ If a vendor is specified, the terms are provided for an expected transaction bet
           
 + Response 403 (application/json)
     
-    Access to the account's terms is forbidden because no link exists between the currently authenticated vendor and the customer.
+    Access to the account's Terms is forbidden because no link exists between the currently authenticated vendor and the customer.
     Note that in some cases, an 403 is returned when the requested Account ID does not exist, instead of the expected 404.
 
     + Body
