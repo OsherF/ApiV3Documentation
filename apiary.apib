@@ -252,7 +252,7 @@ When the vendor's customer has a Behalf Account - the vendor can get the Terms w
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
-- [Create Account Terms](#reference/account/account-terms/create-an-account)
+- [Create Account Terms](#reference/account/account-terms-resource/update-account-details)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
 In those cases the vendor should retry to retrieve the customer's Terms later. 
@@ -535,6 +535,24 @@ Creates a Terms resource for the requested account. This action may cause terms 
             "repaymentsFrequency": "Monthly|Daily"
         }
           
++ Response 202 (application/json)
+
+    Request is queued and will be processed.
+
+    + Body
+    
+            {
+                "accountId": "BHae12d442123",
+                "line": 0,
+                "balance": 0,
+                "maxRepayment": 0,
+                "feePer1K": 0,
+                "grace": null,
+                "minAmount": 0,
+                "maxAmount": 0,
+                "repaymentsFrequency": ""
+            }
+          
 + Response 403 (application/json)
     
     Access to the account's Terms is forbidden because no link exists between the currently authenticated vendor and the customer.
@@ -550,9 +568,9 @@ Creates a Terms resource for the requested account. This action may cause terms 
             }      
 + Response 531 (application/json)
     
-    "Account is missing properties" followed by a list of missing properties. This list details those /account resource properties which have no value and must be entered to retrieve Terms.
+    Account is missing properties, followed by a list of the missing properties. This list details those /account resource properties which have no value and must be entered to retrieve Terms.
     
-    Entering new values into /account properties is done by POST to /account with the terms accountId.
+    Entering the missing values into /account properties is done by POST to the /account with the relevant accountId.
 
     + Body
     
