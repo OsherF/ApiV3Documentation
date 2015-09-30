@@ -232,7 +232,7 @@ There are four basic workflows commonly used by vendors with the Behalf API:
 In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, 
 and add the customer's personal and business addresses to that account. 
 This is done by 3 consecutive API calls:
-- Create an Account
+- Create an Account  [/api/v3/account/][]
 - Update Personal Address
 - Update Business Address
 
@@ -259,7 +259,7 @@ More details regarding this call are found in the Reference section.
 
          
 # Group Members
-## Account Resource [/api/v3/account/]
+## Account Resource [/api/v3/account/] 
 Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
 
 ### Update Account details [PUT /api/account/{accountId}]
