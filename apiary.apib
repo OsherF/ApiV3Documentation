@@ -220,8 +220,27 @@ The format of the Version (e.g. V3) within the URL path is:
 
     /api/V3/{......}
 
-# Group Workflow
-## Token Resource [/api/v3/tokens]
+# Workflows
+There are four basic workflows commonly used by vendors with the Behalf API:
+
+- Create a new Behalf Customer
+    
+- Get Behalf's Terms for a Customer
+    
+- Refer a New Payment to Behalf Customer
+    
+- Get Payment's Status
+
+## Create a New Behalf Customer
+In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, and add the customer's personal and business addresses to that account. This is done by 3 consecutive API calls:
+- Create an Account
+- Update Personal Address
+- Update Business Address
+
+More details regarding these calls are found in the Reference section.
+## Get Behalf's Terms for a Customer
+## Refer a New Payment to Behalf Customer
+## Get Payment's Status
 A token represents a user tracked action that is expected to lead to a particular system workflow, such as sign up or other conversion of state.
 
 ### Create a new token [POST]
