@@ -596,13 +596,13 @@ Creates a Terms resource for the requested account. This action may cause terms 
                 "detail": "The account was declined a credit line"
             }
 
-## Customer Sales Info [/api/customer-sales-info/{linkId}]
-A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer, from the vendor's point of view.
+## Customer Sales Info Resource [/api/customer-sales-info/{linkId}]
+A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer from the vendor's point of view.
 The linkId parameter is returned as part of the POST /api/account action
 + Parameters
-    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /links resource
+    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /customer-sales-info resource
 
-### Retrieve a Link by linkId [GET]
+### Retrieve Customer Sales Info by linkId [GET]
 
 + Response 200 (application/json)
 
@@ -621,7 +621,7 @@ The linkId parameter is returned as part of the POST /api/account action
                 "paymentMethod": "COD"
             }
             
-### Update Link Properties [PUT]
+### Update Customer Sales Info Details [PUT]
 
 + Request (application/json)
 
