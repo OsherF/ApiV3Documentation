@@ -240,7 +240,7 @@ More details regarding these calls are found in the Reference section.
 
 ## Get Behalf's Terms for a Customer
 When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. 
-The Terms include the Credit-Line, Max Duration, Pricing and available Repayment-Plans. 
+The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
 - Retrieve Account Terms
@@ -248,32 +248,18 @@ The customer's Terms are retrived using a single API call:
 More details regarding this call are found in the Reference section.
 
 ## Refer a New Payment to Behalf Customer
+A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
+This is done with a single API call:
+- Create a New Payment
+
+More details regarding this call are found in the Reference section.
+
 ## Get Payment's Status
-A token represents a user tracked action that is expected to lead to a particular system workflow, such as sign up or other conversion of state.
+More details regarding this call are found in the Reference section.
 
-### Create a new token [POST]
-Create a new token and start its associated workflow
-+ Request (application/json)
-
-    + Body
-    
-            {
-                "type": "signup"
-                "email": "new-user@behalf.com"
-            }
-            
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                "token": "BEa094e92215",
-                "type": "signup"
-            }
-            
-            
+         
 # Group Members
-## Account Resource [/api/account/]
+## Account Resource [/api/v3/account/]
 Account resource describing a single set of credentials and associated Company. This resource is available to authenticated users for posting.
 
 ### Update Account details [PUT /api/account/{accountId}]
