@@ -233,7 +233,7 @@ The format of the Version within the URL path (when used) is:
 There are four basic workflows commonly used by vendors with the Behalf API:
 
 - Create a new Behalf Customer
-- Get Behalf's Terms for a Customer
+- Retrieve Behalf's Terms for a Customer
 - Refer a New Payment to Behalf Customer
 - Get Payment's Status
 
@@ -252,7 +252,7 @@ When the vendor's customer has a Behalf Account - the vendor can get the Terms w
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
-- [Create Account Terms](#reference/account/account-terms-resource/update-account-details)
+- [Retrieve Account Terms](#reference/account/account-terms-resource/update-account-details)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
 In those cases the vendor should retry to retrieve the customer's Terms later. 
@@ -267,7 +267,7 @@ In order for a referred Payment to be Approved by Behalf - it should be accepted
 This may take some time as it depends on the customer's availability and response time.
 The vendor may, at any point of time, get the updated status of any of his Payments.
 This is done by a single API call:
-- [Retrieve a Payment](#reference/payment/payment-resource/retrieve-a-payment)
+- [Retrieve Payment Details](#reference/payment/payment-resource/retrieve-payment-details)
          
 # Group Account
 
@@ -722,9 +722,9 @@ Create a payment entity with basic information. Note that creating a transaction
             }
 
 
-### Retrieve a Payment [GET /api/payments/{paymentId}]
+### Retrieve Payment Details[GET /api/payments/{paymentId}]
 
-Retrieve a payment entity according to it's payment Id.
+Retrieve a payment entity according to its payment Id.
 Payment entities include all the relevant information held by Behalf for a particular payment. This includes a link to the terms and conditions signed by the customer.
    
 + Response 200 (applicatio/json)
