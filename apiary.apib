@@ -251,14 +251,14 @@ If those cases the vendor should retry to retrieve the customer's Terms later.
 ## Refer a New Payment to Behalf Customer
 A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
 This is done with a single API call:
-- [Create a New Payment](#reference/pay/payments/create-a-new-payment)
+- [Create a New Payment](#reference/pay/payment/create-a-new-payment)
 
 ## Get Payment's Status
 In order for a referred Payment to be Approved by Behalf - it should be accepted (submitted) by the customer, after selecting his preferred repayment plan.
 This may take some time as it depends on the customer's availability and response time.
 The vendor may, at any point of time, get the updated status of any of his Payments.
 This is done by a single API call:
-- [Retrieve a Payment](#reference/account/account-terms/retrieve-account-terms)
+- [Retrieve a Payment](#reference/pay/payment/retrieve-a-payment)
          
 # Group Account
 ## Account Resource [/api/v3/account/] 
@@ -730,8 +730,7 @@ The linkId parameter is returned as part of the POST /api/account action
                 "paymentMethod": "COD"
             }
             
-# Group Payments
-All action URLs are assumed to have the /api prefix. This path directory is omitted from the examples and resource names for brevity.
+# Group Payment
 
 ## Payments [/api/v3/payments/{paymentId}]
 A resource that describes a transaction between a customer and a vendor.
