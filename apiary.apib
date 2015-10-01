@@ -252,7 +252,7 @@ When the vendor's customer has a Behalf Account - the vendor can get the Terms w
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrived using a single API call:
-- [Retrieve Account Terms](#reference/account/account-terms-resource/update-account-details)
+- [Create Account Terms](#reference/terms/account-terms-resource/create-account-details)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
 In those cases the vendor should retry to retrieve the customer's Terms later. 
@@ -281,7 +281,7 @@ Account resource describes a single set of credentials and an associated Company
 This resource is available to authenticated users for posting.
 
 ### Create an Account [POST]
-This action creates a new Account resource or adds <strong>missing</strong> information to an existing one. 
+This action creates a new Account resource or adds <strong>missing</strong> information to an <strong>existing</strong> one. 
 It cannot be used to override/replace <strong>existing</strong> information.
 Additionally, this action creates a link between the currently authenticated user (vendor) and the created account (customer).
 
