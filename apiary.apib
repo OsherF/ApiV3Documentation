@@ -527,7 +527,10 @@ The vendor can use this resource only for <strong>his</strong> customers.
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
 
 ### Create Account Terms [POST]
-Creates a Terms resource for the requested account. This action may cause terms to be recalcualted for that account.
+Creates Terms resource for a specific account (specified by its <strong>accountId</strong> property).
+The response includes the customer's Behalf terms, such as credit-line, available balance, pricing etc.
+
+This action may cause Terms to be recalcualted for that account.
 
 Note that in some cases the Terms calculation may take up to a couple of minutes.
 In those cases the Response will have Code <strong>202</strong> - "Request is In Process" - and the Terms properties will not be set.
