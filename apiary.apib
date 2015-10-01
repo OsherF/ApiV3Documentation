@@ -667,17 +667,15 @@ Update the customer's sales info. The Vendor can do that only for <strong>his</s
             
 # Group Payment
 
-## Payment Resource [/api/payments/{paymentId}]
+## Payment Resource [/api/payments/]
 A resource that describes a transaction between a customer and a vendor.
-A Payment object shows meta information about the payment and its current state. This object is used as the basis for repayment plans and enforcing the lifecycle of a transaction.
-
-+ Parameters
-
-    + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
+A Payment object shows meta information about the payment and its current state. 
+This object is used as the basis for repayment plans and enforcing the lifecycle of a transaction.
 
 ### Create a New Payment [POST]
 
-Create a payment entity with basic information. Note that creating a transaction does not submit it.
+Create a new Payment entity with basic information. 
+Note that creating a Payment does not submit it but only refer it to the relevant customer.
 
 + Request (application/json)
 
@@ -729,10 +727,15 @@ Create a payment entity with basic information. Note that creating a transaction
             }
 
 
-### Retrieve Payment Details[GET /api/payments/{paymentId}]
+### Retrieve Payment Details [GET /api/payments/{paymentId}]
 
-Retrieve a payment entity according to its payment Id.
-Payment entities include all the relevant information held by Behalf for a particular payment. This includes a link to the terms and conditions signed by the customer.
+Retrieve a Payment resource according to the paymentId.
+Payment entities include all the relevant information held by Behalf for a particular payment, including its <strong>status</strong>.
+The vendor may send this request at any time in order to check whether the customer already submitted the Payment.
+
++ Parameters
+
+    + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
    
 + Response 200 (applicatio/json)
 
@@ -752,7 +755,7 @@ Payment entities include all the relevant information held by Behalf for a parti
                 "orderId": null,
                 "messageToBuyer": null,
                 "messageToSeller": null,
-                "referred": false,
+                "referred": true,
                 "submissionDate": "2015-02-22",
                 "initialDate": "2015-02-22",
                 "payDate": null,
