@@ -731,7 +731,7 @@ Note that creating a Payment does not submit it but only refer it to the relevan
             }
 
 
-### Retrieve Payment Details [GET /api/payments/{paymentId}]
+## Retrieve Payment Details [GET /api/payments/{paymentId}]
 
 Retrieve a Payment resource according to the paymentId.
 Payment entities include all the relevant information held by Behalf for a particular payment, including its status.
@@ -788,7 +788,7 @@ The vendor may send this request at any time in order to check whether the custo
             }
 
 
-### Update Payment Status [PATCH ]
+## Update Payment Status [PATCH /api/payments/{paymentId}]
 
 This request allows the vendor to cancel a referred Payment, 
 or to confirm a Payment that was initiated by the customer.
