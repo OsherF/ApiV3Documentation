@@ -241,11 +241,11 @@ There are few basic workflows commonly used by vendors with the Behalf API:
 In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, 
 <strong>including</strong> customer's Personal and Business addresses. 
 This is done by a single API call:
-- [Create an Account](#reference/account/account-resource/Create-an-Account)
+- [Create an Account](#reference/accounts/account-resource/Create-an-Account)
 
 Note that some of the customer's details may be changed later, if and when updated, 
 using the API call:
-- [Update Account Details](#reference/account/account-resource/update-account-details)
+- [Update Account Details](#reference/accounts/account-resource/update-account-details)
 
 ## Retrieve Behalf Terms for a Customer
 When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. 
@@ -260,18 +260,18 @@ In those cases the vendor should retry to retrieve the customer's Terms later.
 ## Refer a New Payment to Behalf Customer
 A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
 This is done with a single API call:
-- [Create a New Payment](#reference/payment/payment-resource/)
+- [Create a New Payment](#reference/payments/payment-resource/)
 
 ## Retrieve Payment Status
 In order for a referred Payment to be Approved by Behalf - it should be accepted (submitted) by the customer, after selecting his preferred repayment plan.
 This may take some time as it depends on the customer's availability and response time.
 The vendor may, at any point of time, get the updated status of any of his Payments.
 This is done by a single API call:
-- [Retrieve Payment Details](#reference/payment/payment-resource/retrieve-payment-details)
+- [Retrieve Payment Details](#reference/payments/payment-resource/retrieve-payment-details)
 
 A vendor can cancel a referred Payment any time <strong>before</strong> the Payment is Approved by Behalf.
 This is done by a single API call:
-- [Update Payment Status](#reference/payment/payment-resource/update-payment-status)
+- [Update Payment Status](#reference/payments/payment-resource/update-payment-status)
 
          
 # Group Accounts
