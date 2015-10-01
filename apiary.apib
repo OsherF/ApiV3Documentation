@@ -685,8 +685,8 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                 "supplierCompanyId": "001J0000011DTrDIAW",
                 "customerCompanyId": "001J000001YxXxwIAF",
                 "amount": 345,
-                "orderId": null,
-                "messageToBuyer": null,
+                "orderId": "976-ab-12",
+                "messageToBuyer": "hello",
                 "messageToSeller": null
             }
 
@@ -705,10 +705,10 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                 "amount": 345,
                 "status": "DRAFT",
                 "termsAndConditions": false,
-                "orderId": null,
-                "messageToBuyer": null,
+                "orderId": "976-ab-12",
+                "messageToBuyer": "hello",
                 "messageToSeller": null,
-                "referred": false,
+                "referred": true,
                 "submissionDate": null,
                 "initialDate": "2015-02-22",
                 "payDate": null,
@@ -752,8 +752,8 @@ The vendor may send this request at any time in order to check whether the custo
                 "amount": 345,
                 "status": "DRAFT",
                 "termsAndConditions": false,
-                "orderId": null,
-                "messageToBuyer": null,
+                "orderId": "976-ab-12",
+                "messageToBuyer": "hello",
                 "messageToSeller": null,
                 "referred": true,
                 "submissionDate": "2015-02-22",
@@ -784,16 +784,26 @@ The vendor may send this request at any time in order to check whether the custo
             }
 
 
-### Step Payment Workflow [PATCH]
+### Update Payment Status [PATCH /api/payments/{paymentId}]
+
+This request allows the vendor to cancel a referred Payment, 
+or to confirm a Payment that was initiated by the customer.
+
 Accepted properties:
 * status - can be changed to "declined" or "confirm". Certain workflows may not allow a status to be changed to the requested status.
-accepets 'canceled' or 'confirm'
+accepets 'cancelled' or 'confirm'
+
++ Parameters
+
+    + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payments resource
+   
+
 + Request (application/json)
 
     + Body
     
             {
-                "status": "canceled"
+                "status": "cancelled"
             }
                 
 + Response 200 (application/json)
@@ -802,74 +812,6 @@ accepets 'canceled' or 'confirm'
 
             {
                 "paymentId": "006J000000HwiPGIAZ",
-                "supplierCompanyId": "001J0000011DTrDIAW",
-                "customerCompanyId": "001J000001YxXxwIAF",
-                "supplierCompany": {
-                    "name": "Behalf Vendor"
-                },
-                "customerBankId": "a06J000000Bqqn4IAB",
-                "amount": 345,
-                "status": "DRAFT",
-                "termsAndConditions": false,
-                "orderId": null,
-                "messageToBuyer": null,
-                "messageToSeller": null,
-                "referred": false,
-                "submissionDate": "2015-02-22",
-                "initialDate": "2015-02-22",
-                "payDate": null,
-                "payoutMethod": "Virtual Card",
-                "totalToCollect": 357,
-                "outstandingAmount": 357,
-                "numSetteledRepayments": 0,
-                "_links": {
-                    "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
-                }
-            }
-
-### Update Payment Details [PUT /api/payments/{paymentId}?action=customerUpdate]
-Update only the "repaymentFrequency" property of an Payment.  This action can only be performed on the customer of the payment  himself, for a vendor with offer Net. 
-+ Parameters
-    + action (required, string, `customerUpdate`) 
-+ Request (application/json)
-
-    + Body
-    
-            {
-                "paymentId": "006J000000HwiPGIAZ",
-                "repaymentFrequency": "Net",
-                "supplierCompanyId": "001J0000011DTrDIAW",
-                "customerCompanyId": "001J000001YxXxwIAF",
-                "supplierCompany": {
-                    "name": "Behalf Vendor"
-                },
-                "customerBankId": "a06J000000Bqqn4IAB",
-                "amount": 345,
-                "status": "DRAFT",
-                "termsAndConditions": false,
-                "orderId": null,
-                "messageToBuyer": null,
-                "messageToSeller": null,
-                "referred": false,
-                "submissionDate": "2015-02-22",
-                "initialDate": "2015-02-22",
-                "payDate": null,
-                "payoutMethod": "Virtual Card",
-                "totalToCollect": 357,
-                "outstandingAmount": 357,
-                "numSetteledRepayments": 0,
-                "_links": {
-                    "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
-                }
-            }
-
-+ Response 200 (application/json)
-    
-    + Body
-    
-            {
-                "paymentId": "006J000000HwiPGIAZ",
-                "repaymentFrequency": "Net",
                 "supplierCompanyId": "001J0000011DTrDIAW",
                 "customerCompanyId": "001J000001YxXxwIAF",
                 "supplierCompany": {
