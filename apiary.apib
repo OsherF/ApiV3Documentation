@@ -610,70 +610,6 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
                 "detail": "The account was declined a credit line"
             }
 
-# Group Customer Sales Info
-
-## Customer Sales Info Resource [/api/customer-sales-info/{linkId}]
-A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer from the vendor's point of view.
-The linkId parameter is returned as part of the POST /api/account action
-+ Parameters
-    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /customer-sales-info resource
-
-### Retrieve Customer Sales Info [GET]
-Get the customer's sales info which was provided by the authenticated user (vendor).
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "linkId": "BHae12d442123",
-                "vendorId": "BHae12d442123",
-                "customerId": "BHae12d442123",
-                "knownSince": "2002-12-25",
-                "totalSalesAmount": 1000,
-                "totalSalesCount": 355,
-                "ytdSalesAmount": 45,
-                "ytdSalesCount": 12,
-                "avgYtdSalesAmount": 32,
-                "paymentMethod": "COD"
-            }
-
- 
- 
-### Update Customer Sales Info [PUT]
-Update the customer's sales info. The Vendor can do that only for <strong>his</strong> customers.
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "knownSince": "2002-12-25",
-                "totalSalesAmount": 1000,
-                "totalSalesCount": 355,
-                "ytdSalesAmount": 45,
-                "ytdSalesCount": 12,
-                "avgYtdSalesAmount": 32,
-                "paymentMethod": "COD"
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "linkId": "BHae12d442123",
-                "vendorId": "BHae12d442123",
-                "customerId": "BHae12d442123",
-                "knownSince": "2002-12-25",
-                "totalSalesAmount": 1000,
-                "totalSalesCount": 355,
-                "ytdSalesAmount": 45,
-                "ytdSalesCount": 12,
-                "avgYtdSalesAmount": 32,
-                "paymentMethod": "COD"
-            }
-            
 # Group Payments
 
 ## Payment Resource [/api/payments/]
@@ -847,3 +783,67 @@ accepets 'cancelled' or 'confirm'
                 }
             }
 
+# Group Customer Sales Info
+
+## Customer Sales Info Resource [/api/customer-sales-info/{linkId}]
+A resource that describes the connection between a particular customer and a particular vendor. This resource provides historical information about the customer from the vendor's point of view.
+The linkId parameter is returned as part of the POST /api/account action
++ Parameters
+    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /customer-sales-info resource
+
+### Retrieve Customer Sales Info [GET]
+Get the customer's sales info which was provided by the authenticated user (vendor).
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "linkId": "BHae12d442123",
+                "vendorId": "BHae12d442123",
+                "customerId": "BHae12d442123",
+                "knownSince": "2002-12-25",
+                "totalSalesAmount": 1000,
+                "totalSalesCount": 355,
+                "ytdSalesAmount": 45,
+                "ytdSalesCount": 12,
+                "avgYtdSalesAmount": 32,
+                "paymentMethod": "COD"
+            }
+
+ 
+ 
+### Update Customer Sales Info [PUT]
+Update the customer's sales info. The Vendor can do that only for <strong>his</strong> customers.
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "knownSince": "2002-12-25",
+                "totalSalesAmount": 1000,
+                "totalSalesCount": 355,
+                "ytdSalesAmount": 45,
+                "ytdSalesCount": 12,
+                "avgYtdSalesAmount": 32,
+                "paymentMethod": "COD"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "linkId": "BHae12d442123",
+                "vendorId": "BHae12d442123",
+                "customerId": "BHae12d442123",
+                "knownSince": "2002-12-25",
+                "totalSalesAmount": 1000,
+                "totalSalesCount": 355,
+                "ytdSalesAmount": 45,
+                "ytdSalesCount": 12,
+                "avgYtdSalesAmount": 32,
+                "paymentMethod": "COD"
+            }
+            
