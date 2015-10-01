@@ -735,8 +735,8 @@ Note that creating a Payment does not submit it but only refer it to the relevan
 ### Retrieve Payment Details [GET /api/payments/{paymentId}]
 
 Retrieve a Payment resource according to the paymentId.
-Payment entities include all the relevant information held by Behalf for a particular payment, including its <strong>status</strong>.
-The vendor may send this request at any time in order to check whether the customer already submitted the Payment.
+Payment entities include all the relevant information held by Behalf for a particular payment, including its status.
+The vendor may send this request at any time in order to check whether the customer already submitted the Payment (as reflected in the <strong>status</strong> property) .
 
 + Parameters
 
