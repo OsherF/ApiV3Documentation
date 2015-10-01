@@ -675,7 +675,7 @@ A resource that describes a transaction between a customer and a vendor.
 A Payment object shows meta information about the payment and its current state. 
 This object is used as the basis for repayment plans and enforcing the lifecycle of a transaction.
 
-### Create a New Payment [POST /api/payments/]
+## Create a New Payment [POST /api/payments/]
 
 Create a new Payment entity with basic information.
 The Response includes a <strong>paymentId</strong> property which will be used in any future requests regarding this Payment.
@@ -788,7 +788,7 @@ The vendor may send this request at any time in order to check whether the custo
             }
 
 
-### Update Payment Status [PATCH /api/payments/{paymentId}]
+### Update Payment Status [PATCH ]
 
 This request allows the vendor to cancel a referred Payment, 
 or to confirm a Payment that was initiated by the customer.
