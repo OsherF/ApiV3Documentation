@@ -678,7 +678,7 @@ Note that creating a Payment does not submit it but only refer it to the relevan
 
 ### Retrieve Payment Details [GET /api/payments/{paymentId}]
 
-Retrieve a Payment resource according to the paymentId.
+Retrieve a Payment resource identified by its <strong>paymentId</strong> property.
 Payment entities include all the relevant information held by Behalf for a particular payment, including its status.
 The vendor may send this request at any time in order to check whether the customer already submitted the Payment (as reflected in the <strong>status</strong> property) .
 
@@ -735,12 +735,11 @@ The vendor may send this request at any time in order to check whether the custo
 
 ### Update Payment Status [PATCH /api/payments/{paymentId}]
 
-This request allows the vendor to cancel a referred Payment, 
-or to confirm a Payment that was initiated by the customer.
+This request allows the vendor to cancel a specific referred Payment, 
+or to confirm a Payment that was initiated by the customer, by setting its <strong>status</strong> property.
 
-Accepted properties:
-* status - can be changed to "declined" or "confirm". Certain workflows may not allow a status to be changed to the requested status.
-accepets 'cancelled' or 'confirm'
+The Payment is idendified by its <strong>paymentId</strong> property.
+
 
 + Parameters
 
