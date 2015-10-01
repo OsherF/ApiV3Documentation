@@ -255,7 +255,7 @@ The customer's Terms are retrieved using a single API call:
 - [Create Account Terms](#reference/terms/account-terms-resource/create-account-details)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
-In those cases the vendor should retry to retrieve the customer's Terms later. 
+In those cases the vendor will get a relevant response and should retry to retrieve the customer's Terms later (i.e. resend this request). 
 
 ## Refer a New Payment to Behalf Customer
 A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
