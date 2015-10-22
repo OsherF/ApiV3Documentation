@@ -299,7 +299,7 @@ When the vendor's customer has a Behalf Account - the vendor can get the Terms w
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrieved using a single API call:
-- [Create Account Terms](#reference/terms/account-terms-resource/create-account-details)
+- [Get Account Terms](#reference/terms/account-terms-resource/get-account-details)
 
 Note that calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
 In those cases the vendor will get a relevant response and should retry to retrieve the customer's Terms later (i.e. resend this request). 
@@ -522,7 +522,8 @@ An existing property will not be overridden by a POST.
 
 
 ### Update Account Details [PUT /api/account/{accountId}]
-Update the details of an account (any property of the object). This action can be performed by a vendor only on **his** customers' accounts, 
+Update the details of an account (**any** property of the resource). 
+**Note:** This action can be performed by a vendor only on **his** customers' accounts, 
 and only **before** an account has passed the signup process. 
 After signup, a vendor can not make any changes to a customer's account.
 + Parameters
@@ -563,7 +564,7 @@ This is an Account sub-resource that describes the account's available Behalf Te
 + Parameters
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
 
-### Create Account Terms [POST]
+### Create Account Terms [GET]
 Creates Terms resource for a specific account (specified by its **accountId** property).
 The response includes the customer's Behalf terms, such as credit-line, available balance, pricing etc.
 
@@ -688,7 +689,6 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                 "supplierCompany": {
                     "name": "Behalf Vendor"
                 },
-                "customerBankId": "a06J000000Bqqn4IAB",
                 "amount": 345,
                 "status": "DRAFT",
                 "termsAndConditions": false,
@@ -699,10 +699,6 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                 "submissionDate": null,
                 "initialDate": "2015-02-22",
                 "payDate": null,
-                "payoutMethod": "Virtual Card",
-                "totalToCollect": 357,
-                "outstandingAmount": 357,
-                "numSetteledRepayments": 0,
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
