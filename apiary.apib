@@ -10,7 +10,7 @@ In this reference you can find information about the actions Behalf exposes and 
 # URL and REST Structure
 Behalf’s API uses the secured https scheme only. Requests in http will be completely ignored.
 
-All calls are sent to the Behalf domain  "www.behalf.com" , and for convenience reasons the prefix  <strong>https://www.behalf.com</strong> is omitted in all URLs mentioned in this document. 
+All calls are sent to the Behalf domain  "www.behalf.com" , and for convenience reasons the prefix  **https://www.behalf.com** is omitted in all URLs mentioned in this document. 
 
 The Behalf API calls rely on REST verbs to perform actions or to retrieve information:
 
@@ -559,7 +559,8 @@ After signup, a vendor can not make any changes to a customer's account.
 # Group Terms
 
 ## Account Terms Resource [/api/account/{accountId}/terms]
-This is an Account sub-resource that describes the account's available Behalf Terms. 
+This is an Account sub-resource that describes the account's available Behalf Terms.
+
 **Note**: The vendor can use this resource only for **his** customers.
 + Parameters
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
