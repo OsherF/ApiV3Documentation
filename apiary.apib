@@ -712,10 +712,66 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                 }
             }
 
+### Update Payment Details [PUT /api/payments/{paymentID}]
+
+Update details of a previously referred Payment.
+**Note**: The vendor can create this resource only for **his** customers.
+The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
+Note that creating a Payment does not submit it but only refer it to the relevant customer.
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "amount": 345,
+                "orderId": "976-ab-12",
+                "messageToBuyer": "hello",
+                "messageToSeller": null
+            }
+
++ Response 201 (applicatio/json)
+
+    + Body
+
+            {
+                "paymentId": "006J000000HwiPGIAZ",
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "supplierCompany": {
+                    "name": "Behalf Vendor"
+                },
+                "customerBankId": "a06J000000Bqqn4IAB",
+                "amount": 345,
+                "status": "DRAFT",
+                "termsAndConditions": false,
+                "orderId": "976-ab-12",
+                "messageToBuyer": "hello",
+                "messageToSeller": null,
+                "referred": true,
+                "submissionDate": null,
+                "initialDate": "2015-02-22",
+                "payDate": null,
+                "payoutMethod": "Virtual Card",
+                "totalToCollect": 357,
+                "outstandingAmount": 357,
+                "numSetteledRepayments": 0,
+                "_links": {
+                    "self": {
+                        "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
+                    },
+                    "tnc": {
+                        "href": "http://www.behalf.com/termsAndConditions"
+                    }
+                }
+            }
+
 
 ### Retrieve Payment Details [GET /api/payments/{paymentId}]
 
-Retrieve a Payment resource identified by its <strong>paymentId</strong> property.
+Retrieve a Payment resource identified by its **paymentId** property.
 Payment entities include all the relevant information held by Behalf for a particular payment, including its status.
 The vendor may send this request at any time in order to check whether the customer already submitted the Payment (as reflected in the <strong>status</strong> property) .
 
