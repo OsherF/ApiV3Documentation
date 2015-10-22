@@ -364,8 +364,8 @@ Account resource describes a single set of credentials and an associated Company
 This resource is available to authenticated users for posting.
 
 ### Create an Account [POST]
-This action creates a new Account resource or adds <strong>missing</strong> information to an <strong>existing</strong> one. 
-It cannot be used to override/replace <strong>existing</strong> information.
+This action creates a new Account resource or adds **missing** information to an **existing** one. 
+It cannot be used to override/replace **existing** information.
 Additionally, this action creates a link between the currently authenticated user (vendor) and the created account (customer).
 
 This POST can get two affirmative responses : 200 or 201
@@ -833,11 +833,11 @@ The vendor may send this request at any time in order to check whether the custo
 ### Update Payment Status [PATCH /api/payments/{paymentId}]
 
 This request allows the vendor to cancel a specific referred Payment, 
-or to confirm a Payment that was initiated by the customer, by setting its <strong>status</strong> property.
+or to confirm a Payment that was initiated by the customer, by setting its **status** property.
 
-The Payment is idendified by its <strong>paymentId</strong> property.
+The Payment is idendified by its **paymentId** property.
 
-Note that this request can be done only <strong>before</strong> the Payment is Approved by Behalf.
+Note that this request can be done only **before** the Payment is Approved by Behalf.
 
 
 + Parameters
