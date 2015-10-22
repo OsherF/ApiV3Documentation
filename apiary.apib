@@ -178,14 +178,14 @@ The Behalf API v3 supports two kinds of authentication: Oauth2 and Signature bas
 ## Oauth2
 The Behalf API supports the Oauth2 grant type **client_credentials**
 
-### Obtaining id and secret
+### Obtaining Id and Secret
 A **client_id** and **client_secret** can be obtained through our Customer Support service. 
 Only certified merchants and verified customers may obtain credentials for integration.
 
 Credentials are provided as requested and only a single pair for every single user.
 
 ### Using credentials to obtain a token
-To obtain an Oauth token a request should be sent to
+To obtain an OAuth token the following request should be sent:
     
     POST /api/oauth
     {
@@ -194,7 +194,7 @@ To obtain an Oauth token a request should be sent to
         "client_secret": <client_secret>,
     }
 
-which will return a response of
+which will return the response:
     
     {
       "access_token": <access_token>,
@@ -203,7 +203,7 @@ which will return a response of
       "scope": null
     }
     
-The **access_token** should be added to the Authorization header in all requests to the API.
+The **access_token** included in the reponse should be added to the Authorization header in all requests to the API.
     
     Authorization: Bearer <access_token>
 
