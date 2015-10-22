@@ -55,6 +55,10 @@ Note that Resource removal (usually done by the DELETE action) is not used in th
 The Behalf API strictly requires several headers to be sent in order to perform authentication and identify legitimate requests. 
 All requests must include the following headers:
 
+**Accept**: The client should specify the desired response format. For now, only application/json is supported.
+
+**Content-Type**: *POST*, *PATCH* and *PUT* requests must also specify the body’s format as application/json
+
 **X-Behalf-Email**: An email address representing the current user active on the API wire. 
 This field is used for audit purposes to track and differentiate between different "users" 
 when a single authentication credentials set is provided for an organisation with multiple "users".
@@ -63,9 +67,6 @@ when a single authentication credentials set is provided for an organisation wit
 
 **Authorization**: An authentication token used for authentication. More details in the authentication section
 
-**Accept**: The client should specify the desired response format. For now, only application/json is supported.
-
-**Content-Type**: *POST*, *PATCH* and *PUT* requests must also specify the body’s format as application/json
 
 # Request Parameters
 Parameters used to pass information for requests are strictly defined for their contents. Requests to the API failing to provide legal values are rejected outright.
