@@ -330,7 +330,8 @@ The vendor may, at any point of time, get the updated status of any of his Payme
 This is done by a single API call:
 - [Retrieve Payment Details](#reference/payments/payment-resource/retrieve-payment-details)
 
-A vendor can cancel a referred Payment any time **before* the Payment is Approved by Behalf.
+## Cancel a Referred Payment
+A vendor can cancel a referred Payment any time **before** the Payment is Approved by Behalf.
 This is done by a single API call:
 - [Update Payment Status](#reference/payments/payment-resource/update-payment-status)
 
@@ -531,7 +532,8 @@ An existing property will not be overridden by a POST.
 
 
 ### Update Account Details [PUT /api/account/{accountId}]
-Update the details of an account (**any** property of the resource). 
+Update the details of an account ( **any** property of the resource). 
+
 **Note:** This action can be performed by a vendor only on **his** customers' accounts, 
 and only **before** an account has passed the signup process. 
 After signup, a vendor can not make any changes to a customer's account.
