@@ -672,8 +672,8 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                 "customerCompanyId": "001J000001YxXxwIAF",
                 "amount": 345,
                 "orderId": "976-ab-12",
+                "description": "5 laptops",
                 "messageToBuyer": "hello",
-                "messageToSeller": null
             }
 
 + Response 201 (applicatio/json)
@@ -714,10 +714,11 @@ Note that creating a Payment does not submit it but only refer it to the relevan
 
 ### Update Payment Details [PUT /api/payments/{paymentID}]
 
-Update details of a previously referred Payment.
-**Note**: The vendor can create this resource only for **his** customers.
-The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
-Note that creating a Payment does not submit it but only refer it to the relevant customer.
+Update the details of a previously referred Payment. 
+**Note:** This action can be performed by a vendor only on **his** Payments, 
+and only **before** a Payment is Submitted by the customer. 
++ Parameters
+    + paymnentId (required, string, `BHae12d442123`) ... Unique identifier of the /payment resource
 
 + Request (application/json)
 
