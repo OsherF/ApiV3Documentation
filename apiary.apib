@@ -398,62 +398,8 @@ An existing property will not be overridden by a POST.
                 "companyDetails": {"name": "company name"}
                 "personalAddress": {"streetAddress": "street details (w/o city,state)","zipcode": "zip code"}
             }
-    
 
-+ Response 200 (application/json)
     
-    + Body
-    
-            {
-                "accountId": "account-id",
-                "firstName": "firstname",
-                "lastName": "lastname",
-                "contact":{
-                    "contactId": "contact-id", "email":"email"
-                },
-                "companyDetails": {
-                    "name": "company name",
-                },
-                "_links": {
-                    "self": {
-                        "href": "https://behalf.com/api/account/account-id"
-                    },
-                    "terms": {
-                        "href": "https://behalf.com/api/account/account-id/terms"
-                    },
-                    "customer-sales": {
-                        "href": "https://behalf.com/api/customer-sales-info/link-id"
-                    }
-                }
-            }
-
-+ Response 201 (application/json)
-    
-    + Body
-    
-            {
-                "accountId": "account-id",
-                "firstName": "firstname",
-                "lastName": "lastname",
-                "contact":{
-                    "contactId": "contact-id", "email":"email"
-                },
-                "companyDetails": {
-                    "name": "company name",
-                },
-                "_links": {
-                    "self": {
-                        "href": "https://behalf.com/api/account/account-id"
-                    },
-                    "terms": {
-                        "href": "https://behalf.com/api/account/account-id/terms"
-                    },
-                    "customer-sales": {
-                        "href": "https://behalf.com/api/customer-sales-info/link-id"
-                    }
-                }
-            }
-
 + Request All available parameters (application/json)
     
     + Body
@@ -483,6 +429,7 @@ An existing property will not be overridden by a POST.
                     "phone": ""
                 }
             }
+
 
 + Response 200 (application/json)
     
@@ -547,6 +494,36 @@ and only **before** an account has passed the signup process.
 After signup, a vendor can not make any changes to a customer's account.
 + Parameters
     + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
+
++ Request All available parameters (application/json)
+    
+    + Body
+    
+            {
+                "firstName": "firstname",
+                "lastName":  "lastname",
+                "contact": {"email":"email"},
+                "companyDetails": {
+                    "name": "company name",
+                    "duns": "DUNS number",
+                    "tin": "TIN code",
+                    "website": "http://website.com",
+                    "inceptionDate": "2002-12-25" //Also accepts unix timestamp
+                },
+                "ssn": "123456781",
+                "businessAddress": {
+                    "streetAddress": "",
+                    "zipcode": "",
+                    "apt_unit": "",
+                    "phone": ""
+                },
+                "personalAddress": {
+                    "streetAddress": "",
+                    "zipcode": "",
+                    "apt_unit": "",
+                    "phone": ""
+                }
+            }
 
 + Response 200 (application/json)
     
@@ -872,10 +849,10 @@ The Payment is idendified by its **paymentId** property.
                 "supplierCompany": {
                     "name": "Behalf Vendor"
                 },
-                "customerBankId": "a06J000000Bqqn4IAB",
                 "amount": 345,
                 "status": "cancelled",
                 "termsAndConditions": false,
+                "termsAndConditionsUrl": null,
                 "orderId": "976-ab-12",
                 "messageToBuyer": "hello",
                 "messageToSeller": null,
@@ -883,12 +860,13 @@ The Payment is idendified by its **paymentId** property.
                 "submissionDate": "2015-02-22",
                 "initialDate": "2015-02-22",
                 "payDate": null,
-                "payoutMethod": "Virtual Card",
-                "totalToCollect": 357,
-                "outstandingAmount": 357,
-                "numSetteledRepayments": 0,
                 "_links": {
-                    "tnc": {"href": "http://www.behalf.com/termsAndConditions"}
+                    "self": {
+                        "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
+                    },
+                    "tnc": {
+                        "href": "http://www.behalf.com/termsAndConditions"
+                    }
                 }
             }
 
