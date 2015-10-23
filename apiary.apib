@@ -336,7 +336,7 @@ In order for a referred Payment to be Approved by Behalf - it should be accepted
 This may take some time as it depends on the customer's availability and response time.
 The vendor may, at any point of time, get the updated status of any of his Payments.
 This is done by a single API call:
-- [Retrieve Payment Details](#reference/payments/payment-resource/retrieve-payment-details)
+- [Retrieve Payment Status](#reference/payments/payment-resource/retrieve-payment-status)
 
 ## Cancel a Referred Payment
 A vendor can cancel a referred Payment any time **before** the Payment is Approved by Behalf.
@@ -714,6 +714,8 @@ Note that creating a Payment does not submit it but only refer it to the relevan
 ### Update Payment Details [PUT /api/payments/{paymentId}]
 
 Update the details of a previously referred Payment. 
+The details that me be updated are **orderId** , **description** and **messageToBuyer**.
+
 **Note:** This action can be performed by a vendor only on **his** Payments, 
 and only **before** a Payment is Submitted by the customer. 
 + Parameters
@@ -762,11 +764,13 @@ and only **before** a Payment is Submitted by the customer.
             }
 
 
-### Retrieve Payment Details [GET /api/payments/{paymentId}]
+### Retrieve Payment Status [GET /api/payments/{paymentId}]
 
 Retrieve a Payment resource identified by its **paymentId** property.
-Payment entities include all the relevant information held by Behalf for a particular payment, including its status.
-The vendor may send this request at any time in order to check whether the customer already submitted the Payment (as reflected in the <strong>status</strong> property) .
+Payment entities include all the relevant information held by Behalf for a particular payment, including its **status**.
+The vendor may send this request at any time in order to check whether the customer already submitted the Payment (as reflected in the **status** property).
+
+For the available status values - refer to the 
 
 + Parameters
 
