@@ -295,27 +295,27 @@ There are few basic operations commonly done by vendors, using the Behalf API:
 
 ## Create a New Behalf Customer
 In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, 
-<strong>including</strong> customer's Personal and Business addresses. 
+including customer's **Personal** address. 
 This is done by a single API call:
 - [Create an Account](#reference/accounts/account-resource/Create-an-Account)
 
 ## Update Behalf Customer Details
 Customer's details may be changed/updated by the vendor, but only **before** the customer has signed-up to Behalf. 
-This is done using the API call:
+This is done by a single API call:
 - [Update Account Details](#reference/accounts/account-resource/update-account-details)
 
 ## Update Customer Sales Info
 The vendor may provide some of the Sales data he has regarding his Behalf customer.
-This is done using the API call:
-- [Update Account Sales Data](#reference/accounts/account-resource/update-customer-sales-info)
+This extra data may lead to an increased Credit Line of the customer.
 
-**Note:** This extra data may lead to an increased Credit Line of the customer. 
+This is done by a single API call:
+- [Update Account Sales Data](#reference/accounts/account-resource/update-customer-sales-info)
 
 ## Retrieve Behalf Terms for a Customer
 When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. 
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
-The customer's Terms are retrieved using a single API call:
+The customer's Terms are retrieved by a single API call:
 - [Get Account Terms](#reference/terms/account-terms-resource/get-account-details)
 
 **Note:** Calculation of customer's Terms, especially in the first time, may take in extreme cases up to a couple of minutes. 
@@ -323,12 +323,12 @@ In those cases the vendor will get a relevant response and should retry to retri
 
 ## Refer a New Payment to Behalf Customer
 A vendor can refer a new Payment to a Behalf customer who has sufficient available Balance.
-This is done with a single API call:
+This is done by a single API call:
 - [Create a New Payment](#reference/payments/payment-resource/)
 
 ## Update Details of a Referred Payment
 A vendor can update some parameters of a referred Payment, **before** the Payment is Submitted by the customer.
-This is done with a single API call:
+This is done by a single API call:
 - [Update Payment Details](#reference/payments/payment-resource/update-payment-details)
 
 ## Retrieve Payment Status
