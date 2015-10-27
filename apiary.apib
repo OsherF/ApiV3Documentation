@@ -695,11 +695,15 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                 "supplierCompany": {
                     "name": "Behalf Vendor"
                 },
+                "customerCompany": {
+                    "name": "Behalf Customer"
+                },
                 "amount": 345,
-                "status": "DRAFT",
+                "status": "REFERRED_TO_CUSTOMER",
                 "termsAndConditions": false,
                 "termsAndConditionsUrl": null,
                 "orderId": "976-ab-12",
+                "description": "description text",
                 "messageToBuyer": "hello",
                 "messageToSeller": null,
                 "referred": true,
@@ -710,9 +714,6 @@ Note that creating a Payment does not submit it but only refer it to the relevan
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
                     },
-                    "tnc": {
-                        "href": "http://www.behalf.com/termsAndConditions"
-                    }
                 }
             }
 
