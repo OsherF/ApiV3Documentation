@@ -351,10 +351,11 @@ Behalf provides a Demo environment for the API - to be used by external develope
 Requests executed on this environment will behave in a manner similar to the production environment but will not actually charge or make any payouts. 
 This makes the Demo environment a safe place to try out your integration and conduct initial integration tests.
 
-The Demo environment is designed so that it does not require real data for users, other than passing a syntax check. This means that some scenarios on the demo environment will behave a little differently than production.
+The Demo environment is designed so that it does not require real data for users, other than passing a syntax check. 
+This means that some scenarios on the demo environment will behave a little differently than production.
 
 For example:
-    **Create New Payment** - Will always submit the payment regardless of other considerations.
+    **Create New Account** - Will always create an account with available Credit Line regardless of account details.
 
 ## Authentication
 The authentication in the Demo environment is the same as in the normal environment, 
