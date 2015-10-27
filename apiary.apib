@@ -377,6 +377,8 @@ This action creates a new Account resource or adds **missing** information to an
 It cannot be used to override/replace **existing** information.
 Additionally, this action creates a link between the currently authenticated user (vendor) and the created account (customer).
 
+**Note:** Although some of the proprties are optional, it is recommended to provide as much data as possible upon account creation.
+
 This POST can get two affirmative responses : 200 or 201
 
 **The 201 response** indicates the resource was created successfully and the requesting user is linked to the newly created account.
