@@ -386,8 +386,9 @@ This POST can get two affirmative responses : 200 or 201
 **The 200 response** indicates the resource already existed and the requesting user is now linked to that account.
 
 In either case, the same resource is returned. 
-An existing resource will be updated with new information only if that information is missing from the resource. 
-An existing property will not be overridden by a POST.
+
+**Note:** An existing resource will be updated with new information **only** if that information is **missing** from the resource. 
+An existing property will **not** be overridden by a POST (i.e. "conflicting" provided properties are ignored).
 
 
 + Request Mandatory parameters only (application/json)
