@@ -773,7 +773,7 @@ Retrieve a Payment resource identified by its **paymentId** property.
 Payment entities include all the relevant information held by Behalf for a particular payment, including its **status**.
 The vendor may send this request at any time in order to check whether the customer already submitted the Payment (as reflected in the **status** property).
 
-For the available status values - refer to the 
+For the available status values - refer to the Appendix A
 
 + Parameters
 
@@ -824,8 +824,7 @@ For the available status values - refer to the
 
 ### Update Payment Status [PATCH /api/payments/{paymentId}]
 
-This request allows the vendor to cancel a specific referred Payment, 
-or to confirm a Payment that was initiated by the customer, by setting its **status** property.
+This request allows the vendor to **Cancel** a specific referred Payment by setting its **status** property.
 
 The Payment is idendified by its **paymentId** property.
 
