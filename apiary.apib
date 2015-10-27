@@ -301,7 +301,7 @@ This is done by a single API call:
 - [Create an Account](#reference/accounts/account-resource/Create-an-Account)
 
 ## Update Behalf Customer Details
-Customer's details may be changed/updated by the vendor, but only **before** the customer has signed-up to Behalf. 
+Customer's additionals details may be added later by the vendor, but only **before** the customer has signed-up to Behalf. 
 This is done by a single API call:
 - [Update Account Details](#reference/accounts/account-resource/update-account-details)
 
@@ -488,7 +488,7 @@ An existing property will not be overridden by a POST.
 
 
 ### Update Account Details [PUT /api/account/{accountId}]
-Update the details of an account ( **any** property of the resource). 
+Update additional details of an account (only **missing** propertsie of the resource which were not provided before). 
 
 **Note:** This action can be performed by a vendor only on **his** customers' accounts, 
 and only **before** an account has passed the signup process. 
