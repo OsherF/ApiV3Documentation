@@ -313,7 +313,7 @@ This is done by a single API call:
 - [Update Customer Sales Info](#reference/customer-sales-info/customer-sales-info-resource/update-customer-sales-info)
 
 ## Retrieve Behalf Terms for a Customer
-When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer. 
+When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer (to be used with this vendor). 
 The Terms include the customer's Credit-Line, Available Balance, Max Duration, Pricing and available Repayment-Plans. 
 Customer's Terms may change along time, pending on Behalf's criteria and customer's performance.
 The customer's Terms are retrieved by a single API call:
@@ -555,7 +555,7 @@ After signup, a vendor can not make any changes to a customer's account.
 
 # Group Terms
 
-## Account Terms Resource [/api/account/{accountId}/terms]
+## Account Terms Resource [/api/account/{accountId}/terms?vendor=me]
 This is an Account sub-resource that describes the account's available Behalf Terms.
 
 **Note**: The vendor can use this resource only for **his** customers.
@@ -563,8 +563,8 @@ This is an Account sub-resource that describes the account's available Behalf Te
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
 
 ### Get Account Terms [GET]
-Retrieve Terms resource for a specific account (specified by its **accountId** property).
-The response includes the customer's Behalf terms, such as credit-line, available balance, pricing etc.
+Retrieve Terms resource for a specific account (specified by its **accountId** property) which may be used with this vendor.
+The response includes the customer's Behalf terms available to be used with this vendor, such as credit-line, available balance, pricing etc.
 
 This action may cause Terms to be recalcualted for that account.
 
