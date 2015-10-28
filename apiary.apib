@@ -669,7 +669,7 @@ Both supplierCompanyId and customerCompanyId properties must be specified explic
 (i.e. A vendor may only specify his own company-id in the **supplierCompanyId** property).
 
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
-Note that creating a Payment does not submit it but only refer it to the relevant customer.
+Note that creating a Payment sends an email to the customer inviting them to confirm and submit the request. 
 
 + Request (application/json)
 
