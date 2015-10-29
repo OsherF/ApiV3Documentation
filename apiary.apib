@@ -328,7 +328,7 @@ This is done by a single API call:
 - [Create a New Payment](#reference/payments/payment-resource/)
 
 ## Update Details of a Referred Payment
-A vendor can update some parameters of a referred Payment, **before** the Payment is Submitted by the customer.
+A vendor can update some parameters of a referred Payment.
 This is done by a single API call:
 - [Update Payment Details](#reference/payments/payment-resource/update-payment-details)
 
@@ -720,8 +720,7 @@ Note that creating a Payment sends an email to the customer inviting them to con
 Update the details of a previously referred Payment. 
 The details that can be updated are **orderId** , **description** and **messageToBuyer**.
 
-**Note:** This action can be performed by a vendor only on **his** Payments, 
-and only **before** a Payment is Submitted by the customer. 
+**Note:** This action can be performed by a vendor only on **his** Payments. 
 + Parameters
     + paymentId (required, string, `BHae12d442123`) ... Unique identifier of the /payment resource
 
