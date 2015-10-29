@@ -286,7 +286,7 @@ The format of the Version within the URL path (when used) is:
 There are few basic operations commonly done by vendors, using the Behalf API:
 
 - Create a New Behalf Customer
-- Update Behalf Customer Details
+- Add Behalf Customer Details
 - Update Customer Sales Info
 - Retrieve Behalf Terms for a Customer
 - Refer a New Payment to Behalf Customer
@@ -300,10 +300,10 @@ including customer's **Personal** address.
 This is done by a single API call:
 - [Create an Account](#reference/accounts/account-resource/Create-an-Account)
 
-## Update Behalf Customer Details
+## Add Behalf Customer Details
 Customer's additionals details may be added later by the vendor, but only **before** the customer has signed-up to Behalf. 
 This is done by a single API call:
-- [Update Account Details](#reference/accounts/account-resource/update-account-details)
+- [Add Account Details](#reference/accounts/account-resource/add-account-details)
 
 ## Update Customer Sales Info
 The vendor may provide some of the Sales data he has regarding his Behalf customer.
@@ -491,14 +491,12 @@ An existing property will **not** be overridden by a POST (i.e. "conflicting" pr
             }
 
 
-### Update Account Details [PUT /api/account/{accountId}]
-Update additional details of an account (only **missing** propertsie of the resource which were not provided before). 
+### Add Account Details [POST /api/account/]
+Add additional details of an account (only **missing** propertsie of the resource which were not provided before). 
 
 **Note:** This action can be performed by a vendor only on **his** customers' accounts, 
 and only **before** an account has passed the signup process. 
 After signup, a vendor can not make any changes to a customer's account.
-+ Parameters
-    + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account resource
 
 + Request All available parameters (application/json)
     
