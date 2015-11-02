@@ -938,11 +938,11 @@ The vendor's Worflow diagram can be found in
 
 https://docs.google.com/a/zazma.com/drawings/d/1pi4t3M4ijP9C2hhcqulFDX9lcy3ZjV68Km4LzuuC7bQ/edit?usp=sharing
 
-# Group Appendix C: Testing account credentials
+# Group Appendix C: Testing Various Scenarios
 
 Use these account credentials to test the API responses for different scenarios:
 
-| Scenario     | Resource          | Responce | Account Data                                                                    | Additional info|
+| Scenario     | Resource          | Response | Account Data                                                                    | Additional info|
 |--------------|-------------------|----------|-----------------------------------------------------------------------------------------|----------------|
 | Credit Line was declined| Get Account Terms |  532     | Create account with company name that contains the string "declined" (case insenative)  | -              | 
 | Credit Line calculation is in process| Get Account Terms | 202 | Create account with company name that contains the string "inprocess" (case insenative) | Will be changed automatically after 1 min to 200|
