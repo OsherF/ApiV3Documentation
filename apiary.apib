@@ -940,9 +940,12 @@ https://docs.google.com/a/zazma.com/drawings/d/1pi4t3M4ijP9C2hhcqulFDX9lcy3ZjV68
 
 # Group Appendix C: Testing Various Scenarios
 
-Creating account with the followign credentials will allow you to to test the API responses in different scenarios:
+In order to test various scenarios you should use special customer Accounts - i.e. with specific **companyDetails.name** values.
 
-| Scenario     | Resource          | Response | Account credentials                                                                    | Additional info|
+Following are the available scenarios and the associated required Company Names:
+
+| Scenario     | API Call          | Response | Special Account Name                                                                  | Additional info|
 |--------------|-------------------|----------|-----------------------------------------------------------------------------------------|----------------|
-| Credit Line was declined| Get Account Terms |  532     | Create account with company name that contains the string "declined" (case insenative)  | -              | 
-| Credit Line calculation is in process| Get Account Terms | 202 | Create account with company name that contains the string "inprocess" (case insenative) | Will be changed automatically after 1 min to 200|
+| Credit Line Declined| Get Account Terms |  532     | any company name that contains the string "declined" (case insenative)  | -              | 
+| Credit Line calculation In Process| Get Account Terms | 202 | any company name that contains the string "inprocess" (case insenative) | hanged automatically to Approved (200) after 1 min|
+| Credit Line Approved| Get Account Terms |  200     | all other company names | -              | 
