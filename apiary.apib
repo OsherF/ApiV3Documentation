@@ -947,3 +947,14 @@ Following are the available scenarios and the associated required Company Names:
 | Credit Line Declined| Get Account Terms |  532     | any company name that contains the string **declined** (case insenative)  | -              | 
 | Credit Line calculation In Process| Get Account Terms | 202 | any company name that contains the string **inprocess** (case insenative) | changed automatically to Approved (200) after 1 min|
 | Credit Line Approved| Get Account Terms |  200     | all other company names | -              | 
+
+In order to test various scenarios you should use special Payment values - i.e. with specific **orderId** values.
+
+Following are the available scenarios and the associated required Payment details:
+
+| Scenario     | API Call          | Response | Special orderId Value                                                                 | Special description Value | Special amount Value 
+|--------------|-------------------|----------|-----------------------------------------------------------------------------------------|----------------|--------|
+| Payment status SUBMITTED_DECLINED | Get Payment Status | 200 | any orderId value that contains the string **decline** (case insenative) | any description value that contians the string **autosubmit** | - | 
+| Payment status CUSTOMER_SUBMITED_REVIEW | Get Payment Status | 200 | any orderId value that contains the string **review** (case insenative) | any description value that contians the string **autosubmit** | When the **amount** is lower than $10,000 the status will be changed automatically to APPROVED_PAYMENT_GENERATED after 2 min; Otherwise - will stay in CUSTOMER_SUBMITED_REVIEW |
+| Payment status APPROVED_PAYMENT_GENERATED| Get Payment Status | 200 | any OrderId value that doesn't contain the string **decline** OR **inprogress** | any description value that contians the string **autosubmit** (case insenative) | - |
+| Payment status REFFERED_TO_CUSTOMER| Get Payment Status | 200 | any OrderId value including decline and review | description doesn't contian the string **autosubmit** (case insenative) | - |
