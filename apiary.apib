@@ -328,7 +328,7 @@ This is done by a single API call:
 - [Create a New Payment](#reference/payments/payment-resource/)
 
 ## Update Details of a Referred Payment
-A vendor can update some parameters of a referred Payment.
+A vendor can only update the orderId of a referred Payment.
 This is done by a single API call:
 - [Update Payment Details](#reference/payments/payment-resource/update-payment-details)
 
@@ -718,7 +718,7 @@ Note that creating a Payment sends an email to the customer inviting them to con
 ### Update Payment Details [PUT /api/payments/{paymentId}]
 
 Update the details of a previously referred Payment. 
-The details that can be updated are **orderId** , **description** and **messageToBuyer**.
+The detail that can be updated is only the **orderId**.
 
 **Note:** This action can be performed by a vendor only on **his** Payments. 
 + Parameters
@@ -730,8 +730,6 @@ The details that can be updated are **orderId** , **description** and **messageT
 
             {
                 "orderId": "976-ab-12",
-                "description": "5 laptops",
-                "messageToBuyer": "hello",
             }
 
 + Response 200 (applicatio/json)
