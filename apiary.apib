@@ -287,7 +287,7 @@ There are few basic operations commonly done by vendors, using the Behalf API:
 
 - Create a New Behalf Customer
 - Add Behalf Customer Details
-- Update Customer Sales Info
+- Update Additional Data
 - Retrieve Behalf Terms for a Customer
 - Refer a New Payment to Behalf Customer
 - Update Details of a Referred Payment
@@ -305,12 +305,12 @@ Customer's additionals details may be added later by the vendor, but only **befo
 This is done by a single API call:
 - [Add Account Details](#reference/accounts/account-resource/add-account-details)
 
-## Update Customer Sales Info
-The vendor may provide some of the Sales data he has regarding his Behalf customer.
+## Update Additional Data
+The vendor may provide some additional data he has regarding his Behalf customer.
 This extra data may lead to an increased Credit Line of the customer.
 
 This is done by a single API call:
-- [Update Customer Sales Info](#reference/customer-sales-info/customer-sales-info-resource/update-customer-sales-info)
+- [Update Additional Data](#reference/additional-data/additional-data-resource/update-additional-data)
 
 ## Retrieve Behalf Terms for a Customer
 When the vendor's customer has a Behalf Account - the vendor can get the Terms which Behalf assigns to this customer (to be used with this vendor). 
@@ -457,8 +457,8 @@ An existing property will **not** be overridden by a POST (i.e. "conflicting" pr
                     "terms": {
                         "href": "https://behalf.com/api/account/account-id/terms"
                     },
-                    "customer-sales": {
-                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    "additional-data": {
+                        "href": "https://behalf.com/api/additionalData/link-id"
                     }
                 }
             }
@@ -484,8 +484,8 @@ An existing property will **not** be overridden by a POST (i.e. "conflicting" pr
                     "terms": {
                         "href": "https://behalf.com/api/account/account-id/terms"
                     },
-                    "customer-sales": {
-                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    "additional-data": {
+                        "href": "https://behalf.com/api/additionalData/link-id"
                     }
                 }
             }
@@ -549,8 +549,8 @@ After signup, a vendor can not make any changes to a customer's account.
                     "terms": {
                         "href": "https://behalf.com/api/account/account-id/terms"
                     },
-                    "customer-sales": {
-                        "href": "https://behalf.com/api/customer-sales-info/link-id"
+                    "additional-data": {
+                        "href": "https://behalf.com/api/additionalData/link-id"
                     }
                 }
             }
@@ -902,7 +902,7 @@ The Additional Data resource is used to represent more information that the vend
     + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /additionalData
 
 ### Update an additional data [PUT /api/additionalData/{linkId}]
-**Note:** Update additional data will overwrite any existing data.
+**Note:** Update Additional Data will overwrite any existing data.
 
 
 + Request (application/json)
