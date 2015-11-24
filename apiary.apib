@@ -620,10 +620,12 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
                 "title": "Forbidden",
                 "status": 403,
                 "detail": "Access to account terms is forbidden"
-            }      
+            } 
+        
 + Response 531 (application/json)
     
-    Account is missing properties, followed by a list of the missing properties. This list details those /account resource properties which have no value and must be entered to retrieve Terms.
+    Account is missing properties, followed by a list of the missing properties.
+    This list details those /account resource properties which have no value and must be entered to retrieve Terms.
     
     Entering the missing values into /account properties is done by POST to the /account with the relevant accountId.
 
@@ -649,6 +651,20 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
                 "title": "Credit Line Declined",
                 "status": 532,
                 "detail": "The account was declined a credit line"
+            }
+
++ Response 533 (application/json)
+    
+    Account is missing some Additional Data.
+    Entering the missing data is done by PUT to the /AdditionalData resource with the relevant linkId.    
+
+    + Body
+    
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "Bad request",
+                "status": 533,
+                "detail": "Additional data is required"
             }
 
 # Group Payments
