@@ -568,8 +568,10 @@ The Additional Data resource is used to represent more information that the vend
 + Parameters
     + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /additionalData
 
-### Update an Additional Data [PUT /api/additionalData/{linkId}]
-**Note:** Update Additional Data will **overwrite** any previously provided data.
+### Update Additional Data [PUT /api/additionalData/{linkId}]
+The request body is flexibile and may include any data fields that the vendor has about that customer.
+
+**Note:** Updated data will **overwrite** any data previously provided using this API call.
 
 
 + Request (application/json)
