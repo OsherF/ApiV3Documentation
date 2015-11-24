@@ -890,33 +890,33 @@ The Payment is idendified by its **paymentId** property.
                 }
             }
 
-# Group Customer Sales Info
+# Group Additional Data
 
-## Customer Sales Info Resource [/api/customer-sales-info/{linkId}]
-A resource that describes the connection between a particular customer and a particular vendor. 
-This resource provides historical information about the customer from the vendor's point of view.
+## Additional Data [/api/additionalData/{linkId}]
+The Additional Data resource is used to represent more information that the vendor has about the customer.
 
 **Note:** The **linkId** parameter is returned as part of the **Create New Behalf Customer** operation. 
-(the **links.customer-sales** in the response).
+(the **links.additionalData** in the response). 
+
 + Parameters
-    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /customer-sales-info resource
+    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /additionalData
 
+### Update an additional data [PUT /api/additionalData/{linkId}]
+**Note:** Update additional data will overwrite any existing data.
 
-### Update Customer Sales Info [PUT]
-Update the customer's sales info. The Vendor can do that only for **his** customers.
 
 + Request (application/json)
 
-    + Body
+    The request & response bodies are flexibile and non conclusive. The following is only an example of possible data passed to this resource.
 
+    + Body
+    
             {
-                "knownSince": "2002-12-25",
-                "totalSalesAmount": 1000,
-                "totalSalesCount": 355,
-                "ytdSalesAmount": 45,
-                "ytdSalesCount": 12,
-                "avgYtdSalesAmount": 32,
-                "paymentMethod": "COD"
+                "duns": "804735132",
+                "industry": "finanace",
+                "employes": 120,
+                "businesType": "partnership",
+                "YearOfIncorporation": 2012
             }
 
 + Response 200 (application/json)
@@ -924,21 +924,14 @@ Update the customer's sales info. The Vendor can do that only for **his** custom
     + Body
 
             {
-                "linkId": "BHae12d442123",
-                "vendorId": "BHae12d442123",
-                "customerId": "BHae12d442123",
-                "knownSince": "2002-12-25",
-                "totalSalesAmount": 1000,
-                "totalSalesCount": 355,
-                "ytdSalesAmount": 45,
-                "ytdSalesCount": 12,
-                "avgYtdSalesAmount": 32,
-                "paymentMethod": "COD"
+                "duns": "804735132",
+                "industry": "finanace",
+                "employes": 120,
+                "businesType": "partnership",
+                "yearOfIncorporation": 2012
             }
-            
 
 
- 
 # Group Appendix A: API Calls Parameters
 
 More details regarding the API calls parameters 
