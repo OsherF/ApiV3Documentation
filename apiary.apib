@@ -557,6 +557,51 @@ After signup, a vendor can not make any changes to a customer's account.
                 }
             }
 
+# Group Additional Data
+
+## Additional Data [/api/additionalData/{linkId}]
+The Additional Data resource is used to represent more information that the vendor has about the customer.
+
+**Note:** The **linkId** parameter is the value that is returned as part of the **Create New Behalf Customer** operation. 
+(the **links.additionalData** in the response). 
+
++ Parameters
+    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /additionalData
+
+### Update an Additional Data [PUT /api/additionalData/{linkId}]
+**Note:** Update Additional Data will **overwrite** any previously provided data.
+
+
++ Request (application/json)
+
+    The request & response bodies are flexibile and non conclusive. 
+    The following is **only an example** of possible data passed to this resource, 
+    where the vendor may provide more data fields he has.
+
+    + Body
+    
+            {
+                "duns": "804735132",
+                "industry": "finanace",
+                "employees": 120,
+                "businessType": "partnership",
+                "YearOfIncorporation": 2012
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "duns": "804735132",
+                "industry": "finanace",
+                "employees": 120,
+                "businessType": "partnership",
+                "yearOfIncorporation": 2012
+            }
+
+
+
 # Group Terms
 
 ## Account Terms Resource [/api/account/{accountId}/terms?vendor=me]
@@ -891,48 +936,6 @@ The Payment is idendified by its **paymentId** property.
                     }
                 }
             }
-
-# Group Additional Data
-
-## Additional Data [/api/additionalData/{linkId}]
-The Additional Data resource is used to represent more information that the vendor has about the customer.
-
-**Note:** The **linkId** parameter is returned as part of the **Create New Behalf Customer** operation. 
-(the **links.additionalData** in the response). 
-
-+ Parameters
-    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /additionalData
-
-### Update an Additional Data [PUT /api/additionalData/{linkId}]
-**Note:** Update Additional Data will **overwrite** any existing data.
-
-
-+ Request (application/json)
-
-    The request & response bodies are flexibile and non conclusive. The following is only an example of possible data passed to this resource.
-
-    + Body
-    
-            {
-                "duns": "804735132",
-                "industry": "finanace",
-                "employes": 120,
-                "businesType": "partnership",
-                "YearOfIncorporation": 2012
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "duns": "804735132",
-                "industry": "finanace",
-                "employes": 120,
-                "businesType": "partnership",
-                "yearOfIncorporation": 2012
-            }
-
 
 # Group Appendix A: API Calls Parameters
 
