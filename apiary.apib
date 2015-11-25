@@ -171,7 +171,7 @@ Hypermedia Links structure example:
             "href": "https://behalf.com/api/account/{accountId}/terms"
         },
         "additionalData": {
-                        "href": "https://behalf.com/api/additional-data/link-id"
+                        "href": "https://behalf.com/api/additionalData/{linkId}"
                     }
     }
 
@@ -689,10 +689,11 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
             
 + Response 532 (application/json)
     
-    Account Credit Line was declined. This account currently has no creditline available from Behalf and cannot create payments.
-    
+    Account Credit Line was declined. This account currently has
+    no creditline available from Behalf and cannot create payments.
     Note that this state is not permanent and may change in future GET terms checks.
     
+
     + Body
     
             {
@@ -875,6 +876,7 @@ For the available status values - refer to the Appendix A
             }
 + Response 404 (application/json)
     
+
     + Body
     
             {
