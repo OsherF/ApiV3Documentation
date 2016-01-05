@@ -458,7 +458,7 @@ An existing property will **not** be overridden by a POST (i.e. "conflicting" pr
                         "href": "https://behalf.com/api/account/{account-id}/terms"
                     },
                     "additionalData": {
-                        "href": "https://behalf.com/api/additionalData/{link-id}"
+                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
@@ -485,7 +485,7 @@ An existing property will **not** be overridden by a POST (i.e. "conflicting" pr
                         "href": "https://behalf.com/api/account/{account-id}/terms"
                     },
                     "additionalData": {
-                        "href": "https://behalf.com/api/additionalData/{link-id}"
+                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
@@ -550,23 +550,23 @@ After signup, a vendor can not make any changes to a customer's account.
                         "href": "https://behalf.com/api/account/{account-id}/terms"
                     },
                    "additionalData": {
-                        "href": "https://behalf.com/api/additionalData/{link-id}"
+                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
 
 # Group Additional Data
 
-## Additional Data [/api/additionalData/{linkId}]
+## Additional Data [/api/additionalData/{additionalDataId}]
 The Additional Data resource is used to represent more information that the vendor has about the customer.
 
-**Note:** The **linkId** parameter is the value that is returned as part of the **Create New Behalf Customer** operation. 
+**Note:** The **additionalDataId** parameter is the value that is returned as part of the **Create New Behalf Customer** operation. 
 (the **links.additionalData** in the response). 
 
 + Parameters
-    + linkId (required, string, `BHae12d442123`) ... Unique identifier of the /additionalData
+    + additionalDataId (required, string, `BHae12d442123`) ... Unique identifier of the /additionalData
 
-### Update Additional Data [PUT /api/additionalData/{linkId}]
+### Update Additional Data [PUT /api/additionalData/{additionalDataId}]
 The request body is flexibile and may include any data fields that the vendor has about that customer.
 
 **Note:** Updated data will **overwrite** any data previously provided using this API call.
@@ -592,10 +592,16 @@ The request body is flexibile and may include any data fields that the vendor ha
     + Body
 
             {
+                "additionalDataId": "additionalData-id",
                 "industry": "finance",
                 "employees": 120,
                 "businessType": "partnership",
                 "yearOfIncorporation": 2012
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
+                    }
+                }
             }
 
 
