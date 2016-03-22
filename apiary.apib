@@ -632,7 +632,7 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
 + Response 200 (application/json)
 
         {
-            "accountId": "BHae12d442123",
+            "accountId": "account-id",
             "line": 5000,
             "balance": 4500,
             "maxRepayment": 60,
@@ -640,7 +640,14 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
             "grace": null,
             "minAmount": 300,
             "maxAmount": 5000,
-            "repaymentsFrequency": "Weekly;Monthly"
+            "repaymentFrequencies": "Weekly;Monthly",
+            "allowExpressBankFlow": false,
+            "hasBalance": true,
+            "_links": {
+                "self": {
+                    "href": "https://behalf.com/api/account/{account-id}/terms"
+                }
+            }
         }
           
 + Response 202 (application/json)
@@ -650,7 +657,7 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
     + Body
     
             {
-                "accountId": "BHae12d442123",
+                "accountId": "account-id",
                 "line": 0,
                 "balance": 0,
                 "maxRepayment": 0,
@@ -658,7 +665,14 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
                 "grace": null,
                 "minAmount": 0,
                 "maxAmount": 0,
-                "repaymentsFrequency": ""
+                "repaymentFrequencies": ""
+                "allowExpressBankFlow": false,
+                "hasBalance": false,
+                "_links": {
+                    "self": {
+                        "href": "https://behalf.com/api/account/{account-id}/terms"
+                    }
+                }
             }
           
 + Response 403 (application/json)
