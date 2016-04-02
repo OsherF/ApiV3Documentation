@@ -753,7 +753,7 @@ Both supplierCompanyId and customerCompanyId properties must be specified explic
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
 Note that creating a Payment sends an email to the customer inviting them to confirm and submit the request. 
 
-+ Request (application/json)
++ Request Normal Payment (application/json)
 
     + Body
 
@@ -812,6 +812,11 @@ Note that creating a Payment sends an email to the customer inviting them to con
                 "submissionDate": null,
                 "initialDate": "2015-02-22",
                 "payDate": null,
+                "paymentMethod": "Virtual Card",
+                "paymentStatus": "na",
+                "virtualCard": "na",
+                "virtualCardToken": "na",
+                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
@@ -858,6 +863,11 @@ The detail that can be updated is only the **orderId**.
                 "submissionDate": null,
                 "initialDate": "2015-02-22",
                 "payDate": null,
+                "paymentMethod": "Virtual Card",
+                "paymentStatus": "na",
+                "virtualCard": "na",
+                "virtualCardToken": "na",
+                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
@@ -903,6 +913,11 @@ For the available status values - refer to the Appendix A
                 "submissionDate": "2015-02-22",
                 "initialDate": "2015-02-22",
                 "payDate": null,
+                "paymentMethod": "Virtual Card",
+                "paymentStatus": "na",
+                "virtualCard": "na",
+                "virtualCardToken": "na",
+                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
@@ -912,9 +927,9 @@ For the available status values - refer to the Appendix A
                     }
                 }
             }
+
 + Response 404 (application/json)
     
-
     + Body
     
             {
@@ -946,7 +961,7 @@ The Payment is idendified by its **paymentId** property.
             {
                 "status": "cancelled"
             }
-                
+  
 + Response 200 (application/json)
 
     + Body
@@ -969,6 +984,11 @@ The Payment is idendified by its **paymentId** property.
                 "submissionDate": "2015-02-22",
                 "initialDate": "2015-02-22",
                 "payDate": null,
+                "paymentMethod": "Virtual Card",
+                "paymentStatus": "na",
+                "virtualCard": "na",
+                "virtualCardToken": "na",
+                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
