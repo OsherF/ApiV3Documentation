@@ -777,12 +777,13 @@ Note that creating a Payment sends an email to the customer inviting them to con
                 "orderId": "976-ab-12",
                 "description": "5 laptops",
                 "messageToBuyer": "hello",
-                "Recurring": true,
-                "Recurring Interval": "Year",
-                "Renewal": true,
-                "sourceOrderId": "876-aa-10",
-                "sourcePaymentId": "001J000001CCCxwIDD",
-                "sourceVirtualCard": 7613
+                "recurring": true,
+                "recurringInterval": "Year",
+                "recurringMode": "manual",
+                "renewal": true,
+                "referenceOrderId": "876-aa-10",
+                "referencePaymentId": "001J000001CCCxwIDD",
+                "referenceVirtualCard": 7613
             }
 
 + Response 201 (applicatio/json)
