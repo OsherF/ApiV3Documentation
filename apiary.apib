@@ -828,7 +828,7 @@ Note that creating a Payment sends an email to the customer inviting them to con
 ### Update Payment Details [PUT /api/payments/{paymentId}]
 
 Update the details of a previously referred Payment. 
-The detail that can be updated is only the **orderId**.
+The detail that can be updated are only the **orderId**, **description** or **messageToBuyer**.
 
 **Note:** This action can be performed by a vendor only on **his** Payments. 
 + Parameters
@@ -839,7 +839,9 @@ The detail that can be updated is only the **orderId**.
     + Body
 
             {
-                "orderId": "976-ab-13"
+                "orderId": "976-ab-13",
+                "description": "5 laptops",
+                "messageToBuyer": "hello",
             }
 
 + Response 200 (applicatio/json)
