@@ -742,13 +742,17 @@ A resource that describes a transaction between a customer and a vendor.
 A Payment object shows meta information about the payment and its current state. 
 This object is used as the basis for repayment plans and enforcing the lifecycle of a transaction.
 
-### Create a New Payment [POST /api/payments/]
+### Create a New Payment [POST /api/payments/?origin={referencePaymentId}]
 
 Create a new Payment entity with basic information.
 Both supplierCompanyId and customerCompanyId properties must be specified explicitly.
 
-**Note**: The vendor can create this resource only for **his** customers 
+**Note1**: The vendor can create this resource only for **his** customers 
 (i.e. A vendor may only specify his own company-id in the **supplierCompanyId** property).
+
+**Note2**: The **origin** parameter in the query string is optional - to be used when it's a **renewal** 
+of a previously approved Payment (e.g. from last year).
+In that case the **referencePaymentId** is the **paymentId** property that was included in the response of the original Payment (i.e. that from last year).
 
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
 Note that creating a Payment sends an email to the customer inviting them to confirm and submit the request. 
@@ -777,11 +781,7 @@ Note that creating a Payment sends an email to the customer inviting them to con
                 "orderId": "976-ab-12",
                 "description": "5 laptops",
                 "messageToBuyer": "hello",
-                "recurring": true,
-                "recurringInterval": "Year",
-                "recurringMode": "api",
-                "renewal": true,
-                "referencePaymentId": "001J000001CCCxwIDD",
+                "recurring": true
             }
 
 + Response 201 (applicatio/json)
