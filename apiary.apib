@@ -750,9 +750,9 @@ Both supplierCompanyId and customerCompanyId properties must be specified explic
 **Note1**: The vendor can create this resource only for **his** customers 
 (i.e. A vendor may only specify his own company-id in the **supplierCompanyId** property).
 
-**Note2**: The **origin** parameter in the query string is optional - to be used when it's a **renewal** 
-of a previously approved Payment (e.g. from last year).
-In that case the **referencePaymentId** is the **paymentId** property that was included in the response of the original Payment (i.e. that from last year).
+**Note2**: There is an optional parameter in the query string - **origin** , to be used when it's a **renewal** 
+of a previously approved Payment (e.g. from last year), 
+where in that case its value should be set to the **paymentId** property of the original Payment (i.e. that from last year).
 
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
 Note that creating a Payment sends an email to the customer inviting them to confirm and submit the request. 
@@ -811,13 +811,6 @@ Note that creating a Payment sends an email to the customer inviting them to con
                 "initialDate": "2015-02-22",
                 "payDate": null,
                 "recurring": false,
-                "recurringInterval": "na",
-                "recurringMode": "na",
-                "paymentMethod": "na",
-                "paymentStatus": "na",
-                "virtualCard": "na",
-                "virtualCardToken": "na",
-                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
@@ -867,13 +860,6 @@ The detail that can be updated are only the **orderId**, **description** or **me
                 "initialDate": "2015-02-22",
                 "payDate": null,
                 "recurring": false,
-                "recurringInterval": "na",
-                "recurringMode": "na",
-                "paymentMethod": "na",
-                "paymentStatus": "na",
-                "virtualCard": "na",
-                "virtualCardToken": "na",
-                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
@@ -920,13 +906,6 @@ For the available status values - refer to the Appendix A
                 "initialDate": "2015-02-22",
                 "payDate": null,
                 "recurring": false,
-                "recurringInterval": "na",
-                "recurringMode": "na",
-                "paymentMethod": "na",
-                "paymentStatus": "na",
-                "virtualCard": "na",
-                "virtualCardToken": "na",
-                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
@@ -994,13 +973,6 @@ The Payment is idendified by its **paymentId** property.
                 "initialDate": "2015-02-22",
                 "payDate": null,
                 "recurring": false,
-                "recurringInterval": "na",
-                "recurringMode": "na",
-                "paymentMethod": "na",
-                "paymentStatus": "na",
-                "virtualCard": "na",
-                "virtualCardToken": "na",
-                "expirationDate": "na",
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
