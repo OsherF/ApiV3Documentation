@@ -755,7 +755,8 @@ of a previously approved Payment (e.g. from last year),
 where in that case its value should be set to the **paymentId** property of the original Payment (i.e. that from last year).
 
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
-Note that creating a Payment sends an email to the customer inviting them to confirm and submit the request. 
+Note that creating a Payment sends an email to the customer inviting him to confirm and submit the Payment 
+(unless it's a **renewal**, where in this case the customer will get an email notification that a Payment was created and submitted).
 
 + Request Normal Payment (application/json)
 
@@ -810,8 +811,8 @@ Note that creating a Payment sends an email to the customer inviting them to con
                 "submissionDate": null,
                 "initialDate": "2015-02-22",
                 "payDate": null,
+                "submitFailureReason": null,
                 "recurring": false,
-                "vcExpirationDate": "1019"
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
@@ -987,6 +988,30 @@ The Payment is idendified by its **paymentId** property.
                 }
             }
 
+# Group Workflow
+## Token Resource [/api/token]
+A token represents a user tracked action that is expected to lead to a particular system workflow, such as invite or other conversion of state.
+
+### Create a new token [POST]
+Create a new token and start its associated workflow
++ Request (application/json)
+
+    + Body
+    
+            {
+                "type": "invite"
+                "accountId": "account-id"
+            }
+            
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "token": "BEa094e92215",
+                "accountId": "account-id"
+            }
+            
 # Group Appendix A: API Calls Parameters
 
 More details regarding the API calls parameters 
