@@ -755,6 +755,9 @@ Both supplierCompanyId and customerCompanyId properties must be specified explic
 of a previously approved Payment (e.g. from last year), 
 where in that case its value should be set to the **paymentId** property of the original Payment (i.e. that from last year).
 
+**Note3**: There is an option to create this resource as an Auto Pay resource, to be used when it's a Payment that the customer doesn't 
+need to submit (auto-submitted by the vendor)
+
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
 Note that creating a Payment sends an email to the customer inviting him to confirm and submit the Payment 
 (unless it's a **renewal** a previously approved Payment, where in this case the customer will get an email notification that a Payment was created and submitted).
