@@ -785,6 +785,19 @@ Note that creating a Payment sends an email to the customer inviting him to conf
                 "messageToBuyer": "hello",
                 "recurring": true
             }
++ Request autoPay Payment (application/json)
+
+    + Body
+
+            {
+                "supplierCompanyId": "001J0000011DTrDIAW",
+                "customerCompanyId": "001J000001YxXxwIAF",
+                "amount": 345,
+                "orderId": "976-ab-12",
+                "description": "5 laptops",
+                "messageToBuyer": "hello",
+                "autoPay": true
+            }
 
 + Response 201 (applicatio/json)
 
@@ -814,6 +827,7 @@ Note that creating a Payment sends an email to the customer inviting him to conf
                 "payDate": null,
                 "submitFailureReason": null,
                 "recurring": false,
+                "autoPay": false,
                 "_links": {
                     "self": {
                         "href": "https://www.behalf.com/api/payments/006J000000HwiPGIAZ"
