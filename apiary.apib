@@ -755,8 +755,9 @@ Both supplierCompanyId and customerCompanyId properties must be specified explic
 of a previously approved Payment (e.g. from last year), 
 where in that case its value should be set to the **paymentId** property of the original Payment (i.e. that from last year).
 
-**Note3**: There is an option to create this resource as an Auto Pay resource, to be used when it's a Payment that the customer doesn't 
-need to submit (auto-submitted by the vendor).
+**Note3**: There is an optional parameter in the query string - **submit** , which accepts the values **no|yes|try**. Passing **yes** will 
+force a try to submit the payment, if it cannot be submitted the payment will not be created and an error will be returned. If **try** is
+passed the payment will be created and submitted if possible. The default value is **no**, which will create a regular referred payment which is not submitted.
 
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
 Note that creating a Payment sends an email to the customer inviting him to confirm and submit the Payment 
@@ -798,8 +799,7 @@ Note that creating a Payment sends an email to the customer inviting him to conf
                 "amount": 345,
                 "orderId": "976-ab-12",
                 "description": "5 laptops",
-                "messageToBuyer": "hello",
-                "autoPay": true
+                "messageToBuyer": "hello"
             }
 
 + Response 201 (applicatio/json)
