@@ -743,7 +743,7 @@ A resource that describes a transaction between a customer and a vendor.
 A Payment object shows meta information about the payment and its current state. 
 This object is used as the basis for repayment plans and enforcing the lifecycle of a transaction.
 
-### Create a New Payment [POST /api/payments/?origin={referencePaymentId}]
+### Create a New Payment [POST /api/payments/?submit=no]
 
 Create a new Payment entity with basic information.
 Both supplierCompanyId and customerCompanyId properties must be specified explicitly.
@@ -756,7 +756,7 @@ of a previously approved Payment (e.g. from last year),
 where in that case its value should be set to the **paymentId** property of the original Payment (i.e. that from last year).
 
 **Note3**: There is an optional parameter in the query string - **submit** , which accepts the values **no|yes|try**. Passing **yes** will 
-force a try to submit the payment, if it cannot be submitted the payment will not be created and an error will be returned. If **try** is
+force an attempt to submit the payment, if it cannot be submitted the payment will not be created and an error will be returned. If **try** is
 passed the payment will be created and submitted if possible. The default value is **no**, which will create a regular referred payment which is not submitted.
 
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
