@@ -994,17 +994,19 @@ The Payment is idendified by its **paymentId** property.
                 }
             }
 
-# Group Workflow
+# Group Workflows
 ## Token Resource [/api/token]
 A token represents a user tracked action that is expected to lead to a particular system workflow, such as invite or other conversion of state.
 
-### Create a new token [POST]
+### Create a new invite customer token [POST]
 This action creates a new token and start its associated workflow.
-The token creation will trigger an invite email that will be sent to the customer. That email includes this token.
+The token creation will trigger an invite email that will be sent to the customer. That link in the 
+email includes this token.
 This token should be used in 2 main scenarios: 
 
-1. To refer a customer who doesn’t have a payment to complete the qualification process.
-2. To refer customers who are SSN required.
+1. To invite a customer who doesn’t have a payment to complete the qualification process.
+2. To invite customers, who their retrieve Terms call ended with 531 response: "Account is missing properties: ssn", 
+to provide this information as part of the qualification process.
 
 + Request (application/json)
 
