@@ -10,7 +10,7 @@ In this reference you can find information about the actions Behalf exposes and 
 # URL and REST Structure
 Behalf’s API uses the secured https scheme only. Requests in http will be completely ignored.
 
-All calls are sent to the Behalf domain  "api.behalf.com" , and for convenience reasons the prefix  **https://api.behalf.com** is omitted in all URLs mentioned in this document. 
+All calls are sent to the Behalf domain  "**api.behalf.com**" , and for convenience reasons the prefix  **https://api.behalf.com** is omitted in all URLs mentioned in this document. 
 
 The Behalf API calls rely on REST verbs to perform actions or to retrieve information:
 
@@ -31,7 +31,7 @@ Resource data is retrieved using the GET action and the associated query part of
 
 For Example:
 
-    GET /api/account/{accountId}/terms?vendor={vendorId}
+    GET /api/account/{accountId}/terms?vendor=me
 
 Resource modification is done using the PUT action, where parameters are passed in the request body.
 
@@ -163,13 +163,13 @@ Hypermedia Links structure example:
 
     "_links": {
         "self": {
-            "href": "https://behalf.com/api/account/{accountId}"
+            "href": "https://api.behalf.com/api/account/{accountId}"
         },
         "terms": {
-            "href": "https://behalf.com/api/account/{accountId}/terms"
+            "href": "https://api.behalf.com/api/account/{accountId}/terms"
         },
         "additionalData": {
-            "href": "https://behalf.com/api/additionalData/{linkId}"
+            "href": "https://api.behalf.com/api/additionalData/{linkId}"
         }
     }
 
@@ -289,6 +289,7 @@ There are few basic operations commonly done by vendors, using the Behalf API:
 
 - Create a New Behalf Customer
 - Add Behalf Customer Details
+- Edit Behalf Customer Email
 - Update Additional Data
 - Retrieve Behalf Terms for a Customer
 - Refer a New Payment to Behalf Customer
@@ -300,12 +301,17 @@ There are few basic operations commonly done by vendors, using the Behalf API:
 In order to offer Behalf Terms to his customer, a vendor should first create a Behalf Account for that customer, 
 including customer's **Personal** address. 
 This is done by a single API call:
-- [Create an Account](#reference/accounts/account-resource/Create-an-Account)
+- [Create an Account](#reference/accounts/account-resource/create-an-account)
 
 ## Add Behalf Customer Details
 Customer's additionals details may be added later by the vendor, but only **before** the customer has signed-up to Behalf. 
 This is done by a single API call:
 - [Add Account Details](#reference/accounts/account-resource/add-account-details)
+
+## Edit Behalf Customer Email
+Customer's email may be modified by the vendor, but only **before** the customer has signed-up to Behalf. 
+This is done by a single API call:
+- [Edit Account Email](#reference/accounts/account-resource/edit-account-email)
 
 ## Update Additional Data
 The vendor may provide some additional data he has regarding his Behalf customer.
@@ -455,13 +461,13 @@ An existing property will **not** be overridden by a POST (i.e. "conflicting" pr
                 },
                 "_links": {
                     "self": {
-                        "href": "https://behalf.com/api/account/{account-id}"
+                        "href": "https://api.behalf.com/api/account/{account-id}"
                     },
                     "terms": {
-                        "href": "https://behalf.com/api/account/{account-id}/terms"
+                        "href": "https://api.behalf.com/api/account/{account-id}/terms"
                     },
                     "additionalData": {
-                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
+                        "href": "https://api.behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
@@ -482,13 +488,13 @@ An existing property will **not** be overridden by a POST (i.e. "conflicting" pr
                 },
                 "_links": {
                     "self": {
-                        "href": "https://behalf.com/api/account/{account-id}"
+                        "href": "https://api.behalf.com/api/account/{account-id}"
                     },
                     "terms": {
-                        "href": "https://behalf.com/api/account/{account-id}/terms"
+                        "href": "https://api.behalf.com/api/account/{account-id}/terms"
                     },
                     "additionalData": {
-                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
+                        "href": "https://api.behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
@@ -547,18 +553,29 @@ After signup, a vendor can not make any changes to a customer's account.
                 },
                 "_links": {
                     "self": {
-                        "href": "https://behalf.com/api/account/{account-id}"
+                        "href": "https://api.behalf.com/api/account/{account-id}"
                     },
                     "terms": {
-                        "href": "https://behalf.com/api/account/{account-id}/terms"
+                        "href": "https://api.behalf.com/api/account/{account-id}/terms"
                     },
                    "additionalData": {
-                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
+                        "href": "https://api.behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
 
-### Edit Account Email [PUT /api/account/]
+### Edit Account Email [PUT /api/account/{accountId}]
+Your customer’s email address can be edited at any point prior to sign-up.
+
+Unlike the account details, which cannot be updated after they are submitted, 
+you can edit your customer’s email address anytime prior to sign-up.
+
+**Note:** The **accountId** parameter is the value that is returned as part of the **Create an Account** operation. 
+(the **links.self** in the response). This action can be performed by a vendor only on his customers' accounts.
+
++ Parameters
+    + accountId (required, string, `BHae12d442123`) ... Unique identifier of the /account
+    
 Your customer’s email address can be edited at any point prior to sign-up.
 
 Unlike the account details, which cannot be updated after they are submitted, 
@@ -589,13 +606,13 @@ you can edit your customer’s email address anytime prior to sign-up.
                 },
                 "_links": {
                     "self": {
-                        "href": "https://behalf.com/api/account/{account-id}"
+                        "href": "https://api.behalf.com/api/account/{account-id}"
                     },
                     "terms": {
-                        "href": "https://behalf.com/api/account/{account-id}/terms"
+                        "href": "https://api.behalf.com/api/account/{account-id}/terms"
                     },
                    "additionalData": {
-                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
+                        "href": "https://api.behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
@@ -644,7 +661,7 @@ The request body is flexibile and may include any data fields that the vendor ha
                 "yearOfIncorporation": 2012
                 "_links": {
                     "self": {
-                        "href": "https://behalf.com/api/additionalData/{additionalData-id}"
+                        "href": "https://api.behalf.com/api/additionalData/{additionalData-id}"
                     }
                 }
             }
@@ -688,7 +705,7 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
             "hasBalance": true,
             "_links": {
                 "self": {
-                    "href": "https://behalf.com/api/account/{account-id}/terms"
+                    "href": "https://api.behalf.com/api/account/{account-id}/terms"
                 }
             }
         }
@@ -713,7 +730,7 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
                 "hasBalance": false,
                 "_links": {
                     "self": {
-                        "href": "https://behalf.com/api/account/{account-id}/terms"
+                        "href": "https://api.behalf.com/api/account/{account-id}/terms"
                     }
                 }
             }
@@ -797,9 +814,11 @@ Both supplierCompanyId and customerCompanyId properties must be specified explic
 of a previously approved Payment (e.g. from last year), 
 where in that case its value should be set to the **paymentId** property of the original Payment (i.e. that from last year).
 
-**Note3**: There is an optional parameter in the query string - **submit** , which accepts the values **no|yes|try**. Passing **yes** will 
+**Note3**: There is an **optional** parameter in the query string - **submit** , which accepts the values **no|yes|try**. 
+Passing **yes** will 
 force an attempt to submit the payment, if it cannot be submitted the payment will not be created and an error will be returned. If **try** is
-passed the payment will be created and submitted if possible. The default value is **no**, which will create a regular referred payment which is not submitted.
+passed the payment will be created and submitted only if possible. 
+The default value is **no**, which will create a regular referred payment which is not submitted.
 
 The Response includes a **paymentId** property which will be used in any future requests regarding this Payment.
 Note that creating a Payment sends an email to the customer inviting him to confirm and submit the Payment 
@@ -1047,7 +1066,7 @@ email includes this token.
 This token should be used in 2 main scenarios: 
 
 1. To invite a customer who doesn’t have a payment to complete the qualification process.
-2. To invite customers, who their retrieve Terms call ended with 531 response: "Account is missing properties: ssn", 
+2. To invite customers, who their "Get Account Terms" call ended with 531 response: "Account is missing properties: ssn", 
 to provide this information as part of the qualification process.
 
 + Request (application/json)
