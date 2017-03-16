@@ -187,13 +187,15 @@ Only certified merchants and verified customers may obtain credentials for integ
 
 Credentials are provided as requested and only a single pair for every single user.
 
+**Important:** Note that **client_id** value is differenet from the vendor's **supplierCompanyId** property which is used within the payloads of some calls.
+
 ### Using credentials to obtain a token
 To obtain an OAuth token the following request should be sent:
     
     POST /api/oauth
     {
         "grant_type": "client_credentials",
-        "client_id": <company_id>,
+        "client_id": <client_id>,
         "client_secret": <client_secret>,
     }
 
@@ -890,7 +892,7 @@ Note that creating a Payment sends an email to the customer inviting him to conf
 ### Update Payment Details [PUT /api/payments/{paymentId}]
 
 Update the details of a previously referred Payment. 
-The detail that can be updated are only the **orderId**, **description** or **messageToBuyer**.
+The detail that can be updated is only the **orderId** and only before Payment was submitted (draft status only).
 
 **Note:** This action can be performed by a vendor only on **his** Payments. 
 + Parameters
@@ -1106,6 +1108,7 @@ Following are the available scenarios and the associated required Company Names:
 |--------------|-------------------|----------|-----------------------------------------------------------------------------------------|----------------|
 | Credit Line Declined| Get Account Terms |  532     | any company name that contains the string **declined** (case insenative)  | -              | 
 | Credit Line calculation In Process| Get Account Terms | 202 | any company name that contains the string **inprocess** (case insenative) | changed automatically to Approved (200) after 1 min|
+| Missing Attribute to preform calculation (SSN-Required) | Get Account Terms | 531 | any company name that contains the string **ssn** (case insenative) | - |
 | Credit Line Approved| Get Account Terms |  200     | all other company names | -              | 
 
 In order to test various scenarios you should use special Payment values - i.e. with specific **orderId** values.
