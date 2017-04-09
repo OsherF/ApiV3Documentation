@@ -1052,7 +1052,8 @@ Following are the available scenarios and the associated required Company Names:
 | Credit Line Declined| Get Account Terms |  532     | any company name that contains the string **declined** (case insenative)  | -              | 
 | Credit Line calculation In Process| Get Account Terms | 202 | any company name that contains the string **inprocess** (case insenative) | changed automatically to Approved (200) after 1 min|
 | Missing Attribute to preform calculation (SSN-Required) | Get Account Terms | 531 | any company name that contains the string **ssn** (case insenative) | - |
-| Credit Line Approved| Get Account Terms |  200     | all other company names | -              | 
+| Credit Line Approved| Get Account Terms |  200     | all other company names | -              |
+| Credit Line Approved with ExpressBank| Get Account Terms |  200     | any company name that contains the string **express** (case insenative) | -              |
 
 In order to test various scenarios you should use special Payment values - i.e. with specific **orderId** values.
 
