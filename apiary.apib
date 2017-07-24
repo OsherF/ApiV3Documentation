@@ -1000,29 +1000,40 @@ The Payment is idendified by its **paymentId** property.
                 }
             }
 
-# Group Workflows
+# Group Workflow
+
 ## Token Resource [/api/token]
 A token represents a user tracked action that is expected to lead to a particular system workflow, such as invite or other conversion of state.
 
-### Create a new invite customer token [POST]
+### Invite a customer by token or email [POST]
 This action creates a new token and start its associated workflow.
-The token creation will trigger an invite email that will be sent to the customer. That link in the 
-email includes this token.
-This token should be used in 2 main scenarios: 
+
+**Account based invite (invite)**
+
+The token creation will trigger an invite email that will be sent to the customer. The link in the email includes this token. This token requires an existing account
+
+This token should be used in 2 main scenarios:
 
 1. To invite a customer who doesn’t have a payment to complete the qualification process.
-2. To invite customers, who their "Get Account Terms" call ended with 531 response: "Account is missing properties: ssn", 
-to provide this information as part of the qualification process.
+2. To invite customers, who their "Get Account Terms" call ended with 531 response: "Account is missing properties: ssn", to provide this information as part of the qualification process.
+
+**Email based invite (customerInvite):**
+
+The "customerInvite" token type creates and sends an email invitation to a new customer. The invitation will send the new customer down the signup workflow and at its end the initiating vendor gets an email notification.
+This operation should be used to invite a customer who has no existing account in the system.
+
+The token generated for this operation is a random nonce and is not to be kept. The link in the email will be a global vendor link which is reused.
+
 
 + Request (application/json)
 
     + Body
-    
+
             {
                 "type": "invite"
                 "accountId": "account-id"
             }
-            
+
 + Response 201 (application/json)
 
     + Body
@@ -1031,6 +1042,26 @@ to provide this information as part of the qualification process.
                 "token": "BEa094e92215",
                 "accountId": "account-id"
             }
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "type": "customerInvite"
+                "email": "customer-email@darkstar.com"
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "token": "random-token",
+                "type": "customerInvite",
+                "referringCompanyId": "BEa094e92215"
+            }
+
             
 # Group Appendix A: API Calls Parameters
 
