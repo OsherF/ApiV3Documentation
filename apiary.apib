@@ -1030,7 +1030,7 @@ The token generated for this operation is a random nonce and is not to be kept. 
     + Body
 
             {
-                "type": "invite"
+                "type": "invite",
                 "accountId": "account-id"
             }
 
@@ -1039,8 +1039,30 @@ The token generated for this operation is a random nonce and is not to be kept. 
     + Body
 
             {
-                "token": "BEa094e92215",
+                "token": "random-token",
                 "accountId": "account-id"
+            }
+            
++ Request (application/json)
+
+    + Body
+
+            {
+                "type": "generateUrl",
+                "accountId": "account-id"
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "token": "random-token",
+                "_links": {
+                    "referredSignUp": {
+                            "href": "https://app.behalf.com/users/signup?utm_campaign=soft-invite&utm_medium=email&token=random-token"
+                    }
+                }
             }
 
 + Request (application/json)
@@ -1048,7 +1070,7 @@ The token generated for this operation is a random nonce and is not to be kept. 
     + Body
 
             {
-                "type": "customerInvite"
+                "type": "customerInvite",
                 "email": "customer-email@darkstar.com"
             }
 
@@ -1058,8 +1080,7 @@ The token generated for this operation is a random nonce and is not to be kept. 
 
             {
                 "token": "random-token",
-                "type": "customerInvite",
-                "referringCompanyId": "BEa094e92215"
+                "type": "customerInvite"
             }
 
             
