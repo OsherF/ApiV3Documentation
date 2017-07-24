@@ -618,7 +618,7 @@ The request body is flexibile and may include any data fields that the vendor ha
 ## Account Terms Resource [/api/account/{accountId}/terms?vendor=me]
 This is an Account sub-resource that describes the account's available Behalf Terms.
 
-**Note**: The vendor can use this resource only for **his** customers.
+**Note1:**: The vendor can use this resource only for **his** customers.
 + Parameters
     + accountId (required, string, `BHae12d442123`, `me`) ... Unique identifier of the /account resource
 
@@ -628,11 +628,16 @@ The response includes the customer's Behalf terms available to be used with this
 
 This action may cause Terms to be recalcualted for that account.
 
-Note that in some cases the Terms calculation may take up to a couple of minutes.
+**Note2:** that in some cases the Terms calculation may take up to a couple of minutes.
 In those cases the Response will have Code **202** - "Request is In Process" - and the Terms properties will not be set.
 The user (vendor) will have to post this request again in a later time (e.g. within 2-3 minutes) in order to get the Terms details.
 
 In case the customer is not entitled for Behalf Terms - the Response will inclusde Code **532**.
+
+**Note3:** In order to support the new **In Review** status, the header should also include the following field  
+*X-Behalf-Review-Support:true* along with request. When the field The response for account in review status will have **209** status code.
+If header not provided all **review** cases will go through **532** status code
+
 
 + Response 200 (application/json)
 
@@ -679,7 +684,20 @@ In case the customer is not entitled for Behalf Terms - the Response will inclus
                     }
                 }
             }
-          
+
++ Response 209 (application/json)
+
+    Customer appolication is in manual review. When the review process is done the account status will be changed to **200** or **531**.   
+
+    + Body
+
+            {
+                "type": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html",
+                "title": "In Review",
+                "status": 209,
+                "detail": "Customer application is in review"
+            }
+            
 + Response 403 (application/json)
     
     Access to the account's Terms is forbidden because no link exists between the currently authenticated vendor and the customer.
@@ -1010,7 +1028,8 @@ This action creates a new token and start its associated workflow.
 
 **Account based invite (invite)**
 
-The token creation will trigger an invite email that will be sent to the customer. The link in the email includes this token. This token requires an existing account
+Calling the "invite" type token will trigger an invite email that will be sent to the customer. The link in the email includes this token. This token requires an existing account. 
+Using the "generateUrl" type token will also return a tokenized URL that you can share with the customer in the UI (an invite email will be sent as well).  
 
 This token should be used in 2 main scenarios:
 
@@ -1022,7 +1041,7 @@ This token should be used in 2 main scenarios:
 The "customerInvite" token type creates and sends an email invitation to a new customer. The invitation will send the new customer down the signup workflow and at its end the initiating vendor gets an email notification.
 This operation should be used to invite a customer who has no existing account in the system.
 
-The token generated for this operation is a random nonce and is not to be kept. The link in the email will be a global vendor link which is reused.
+The token generated for this operation is a random nonce and is not to be kept. The link in the email will be a global vendor link which is reused. When
 
 
 + Request (application/json)
